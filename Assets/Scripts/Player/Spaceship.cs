@@ -1,25 +1,35 @@
+using System.Collections;
 using UnityEngine;
-
-/// <summary>
-/// Handles spaceship shooting and collision logic.
-/// </summary>
 public class Spaceship : MonoBehaviour
 {
-    [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float laserSpeed = 10f;
+    [SerializeField] private float bulletSpeed = 2f;
+    [SerializeField] private GameOverUI gameOverUI;
 
-    /// <summary>
-    /// Instantiates a laser and sets its velocity.
-    /// </summary>
+
+    void Awake()
+    {
+        GameObject uiObject = GameObject.FindWithTag("GameManager");
+        if (uiObject != null)
+        {
+            gameOverUI = uiObject.GetComponent<GameOverUI>();
+        }
+
+    }
     public void Shoot()
     {
-        if (laserPrefab && firePoint)
+        if (GameManager.Instance.CurrentState == GameState.GameOver) return;
+
+        if (bulletPrefab && firePoint)
         {
-            GameObject laser = Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
             if (rb)
-                rb.linearVelocity = firePoint.up * laserSpeed;
+            {
+                rb.linearVelocity = firePoint.up * bulletSpeed;
+            }
         }
     }
 
@@ -27,7 +37,11 @@ public class Spaceship : MonoBehaviour
     {
         if (collision.CompareTag("Asteroid"))
         {
+            print("Spceship Hit by asteroid!");
             GameManager.Instance.EndGame();
+            //Get GameOverUI and show it
+
+            gameOverUI.ShowGameOver();
         }
         else if (collision.CompareTag("Star"))
         {

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -9,17 +11,36 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Spaceship spaceship;
+    private Animation anim;
+    private bool isShooting;
+    [SerializeField] private float shootInterval = 0.9f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spaceship = GetComponent<Spaceship>();
+        anim = GetComponent<Animation>();
+    }
+
+    private void Start()
+    {
+        isShooting = true;
+        StartCoroutine(ShootCoroutine());
     }
 
     private void Update()
     {
         HandleMovement();
-        HandleShooting();
+    }
+
+    private IEnumerator ShootCoroutine()
+    {
+
+        while (isShooting && spaceship != null)
+        {
+            spaceship.Shoot();
+            yield return new WaitForSeconds(shootInterval);
+        }
     }
 
     private void HandleMovement()

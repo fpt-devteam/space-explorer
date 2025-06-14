@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Handles main menu button events.
@@ -11,9 +12,9 @@ public class MainMenuUI : MonoBehaviour
     public void OnPlayButton()
     {
         GameManager.Instance.StartGame();
-        SceneLoader.Instance.LoadScene(gameplaySceneName);
+        SceneManager.LoadScene(gameplaySceneName);
     }
-
+    
     public void OnInstructionsButton()
     {
         if (uiManager)

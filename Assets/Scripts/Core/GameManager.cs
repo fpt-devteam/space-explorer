@@ -1,14 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System;
 
 public enum GameState { MainMenu, Playing, GameOver }
 
-/// <summary>
-/// Manages the overall game state and transitions.
-/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
+
+    // Events
+    public event Action<int, bool> OnGameEnded; // finalScore, isHighScore
 
     private void Awake()
     {
@@ -22,27 +24,46 @@ public class GameManager : MonoBehaviour
         CurrentState = GameState.MainMenu;
     }
 
-    /// <summary>
-    /// Starts the game and sets the state to Playing.
-    /// </summary>
     public void StartGame()
     {
         CurrentState = GameState.Playing;
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetScore();
+        }
     }
 
-    /// <summary>
-    /// Ends the game and sets the state to GameOver.
-    /// </summary>
     public void EndGame()
     {
         CurrentState = GameState.GameOver;
+
+        // Handle high score submission
+        if (ScoreManager.Instance != null && HighScoreManager.Instance != null)
+        {
+            int finalScore = ScoreManager.Instance.Score;
+            bool isHighScore = HighScoreManager.Instance.AddScore(finalScore);
+
+            OnGameEnded?.Invoke(finalScore, isHighScore);
+
+            if (isHighScore)
+            {
+                Debug.Log($"🎉 NEW HIGH SCORE! {finalScore}");
+            }
+            else
+            {
+                Debug.Log($"Game Over. Final Score: {finalScore}");
+            }
+        }
     }
 
-    /// <summary>
-    /// Returns to the main menu.
-    /// </summary>
     public void ReturnToMenu()
     {
         CurrentState = GameState.MainMenu;
+    }
+
+    public void RestartGame()
+    {
+        StartGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
