@@ -34,11 +34,10 @@ public class Asteroid : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    if (collision.CompareTag("PlayerBullet"))
-    {
-      print("Asteroid hit by bullet");
-      Destroy(collision.gameObject);
-      ScoreManager.Instance.AddPoints(1);
+    if (!collision.CompareTag("PlayerBullet")) return;
+
+    Destroy(collision.gameObject);
+    ScoreManager.Instance.AddPoints(1);
 
       if (animator)
       {
@@ -47,7 +46,6 @@ public class Asteroid : MonoBehaviour
 
       rb.linearVelocity = Vector2.zero;
       StartCoroutine(DestroyAfterAnimation());
-    }
   }
 
   private IEnumerator DestroyAfterAnimation()

@@ -275,7 +275,7 @@ public class MiniBoss : MonoBehaviour
   {
     if (collision.CompareTag("PlayerBullet"))
     {
-      TakeDamage(50f); // Standard bullet damage
+      TakeDamage(50f); 
       Destroy(collision.gameObject);
     }
     else if (collision.CompareTag("Player"))
@@ -283,9 +283,9 @@ public class MiniBoss : MonoBehaviour
       Player playerScript = collision.GetComponent<Player>();
       if (playerScript != null)
       {
-        if (playerScript.isShieldActive)
+        if (playerScript.currentShield > 0f)
         {
-          playerScript.isShieldActive = false;
+          playerScript.currentShield -= 1;
         }
         else
         {

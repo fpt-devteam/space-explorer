@@ -41,7 +41,7 @@ public class FireAsteroid : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    if (!collision.CompareTag("Bullet")) return;
+    if (!collision.CompareTag("PlayerBullet")) return;
 
     Destroy(collision.gameObject);
     ScoreManager.Instance?.AddPoints(2);

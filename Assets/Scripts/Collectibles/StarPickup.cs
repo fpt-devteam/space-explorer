@@ -3,17 +3,28 @@ using UnityEngine;
 /// <summary>
 /// Represents a collectible star in the game.
 /// </summary>
-public class StarPickup : MonoBehaviour
+public class StarPickup : CollectibleObject
 {
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Optional: play collect sound or animation here
-            Debug.Log("Star collected by Player!");
+  [SerializeField] private int starAmount = 1;
 
-            // Destroy the star object
-            Destroy(gameObject);
-        }
+  public override void Collect(GameObject collector)
+  {
+    var playerStar = collector.GetComponent<Player>();
+    
+    if (playerStar != null)
+    {
+      // playerStar.currentHealth += starAmount;
     }
+  }
+
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.CompareTag("Player"))
+    {
+      Debug.Log("Star collected by Player!");
+      StarManager.Instance.AddPoints(1); 
+      Collect(other.gameObject);
+      Destroy(gameObject);
+    }
+  }
 }

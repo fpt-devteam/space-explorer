@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
   private Rigidbody2D rb;
   private bool isShooting;
   private Animator animator;
+  public Animator shieldAnimator;
+
   [SerializeField] private float shootInterval = 0.9f;
 
   private void Awake()
@@ -33,6 +35,15 @@ public class PlayerController : MonoBehaviour
 
   private void Update()
   {
+    if (player.currentShield > 0f)
+    {
+      shieldAnimator.Play("Battlecruise_Shield");
+    }
+    else
+    {
+      shieldAnimator.Play("New State");
+    }
+
     HandleMovement();
     HandleSkills();
   }
@@ -64,13 +75,14 @@ public class PlayerController : MonoBehaviour
 
     if (collision.CompareTag("Asteroid"))
     {
-      if (player.isShieldActive)
+      if (player.currentShield > 0f)
       {
-        player.isShieldActive = false;
+        player.currentShield -= 1;
       }
       else
       {
-        player.currentHealth -= 10f;
+        Debug.Log("Player collided with an asteroid and lost health.");
+        player.currentHealth -= 1;
         if (player.currentHealth <= 0f)
         {
           animator.Play("Destruction");
@@ -79,22 +91,6 @@ public class PlayerController : MonoBehaviour
           Debug.Log("Player has died.");
         }
       }
-    }
-    if (collision.CompareTag("HealthPickup"))
-    {
-      player.currentHealth += 50f;
-    }
-    if (collision.CompareTag("StaminaPickup"))
-    {
-      player.currentStamina += 10f;
-    }
-    if (collision.CompareTag("ShieldPickup"))
-    {
-      player.isShieldActive = true;
-    }
-    else if (collision.CompareTag("StarPickup"))
-    {
-      StarManager.Instance.AddPoints(1);
     }
   }
   private IEnumerator ShowGameOverAfterAnimation()

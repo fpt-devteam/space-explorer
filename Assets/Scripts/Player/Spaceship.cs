@@ -5,16 +5,11 @@ public class Spaceship : MonoBehaviour
   [SerializeField] private GameObject bulletPrefab;
   [SerializeField] private Transform firePoint;
   [SerializeField] private float bulletSpeed = 2f;
-  private HealthSystem health;
-  private StaminaSystem stamina;
-  private ShieldSystem shield;
 
   void Awake()
   {
-    health = GetComponent<HealthSystem>();
-    stamina = GetComponent<StaminaSystem>();
-    shield = GetComponent<ShieldSystem>();
   }
+
   public void Shoot()
   {
     if (GameManager.Instance.CurrentState == GameState.GameOver) return;
@@ -36,7 +31,7 @@ public class Spaceship : MonoBehaviour
   {
     if (collision.gameObject.CompareTag("EnemyBullet"))
     {
-      health.UseHealth(1);
+      // health.UseHealth(1);
       Destroy(collision.gameObject);
     }
   }
