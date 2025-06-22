@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Spaceship spaceship;
     private Rigidbody2D rb;
     private bool isShooting;
+    private Animator animator;
     [SerializeField] private float shootInterval = 0.9f;
 
     private void Awake()
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         spaceship = GetComponent<Spaceship>();
+        animator = player.GetComponent<Animator>();
     }
 
     private void Start()
@@ -41,16 +43,6 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleSkills()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameManager.Instance.PauseGame();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            GameManager.Instance.ResumeGame();
-        }
-
         // if (Input.GetKeyDown(KeyCode.Space))
         // {
         //     skillSystem.ExecuteSkill(SkillType.SpecialShoot, player);
@@ -89,6 +81,13 @@ public class PlayerController : MonoBehaviour
             else
             {
                 player.currentHealth -= 10f;
+                if (player.currentHealth <= 0f)
+                {
+                    animator.Play("Destruction");
+                    GameManager.Instance.EndGame();
+                    StartCoroutine(ShowGameOverAfterAnimation());
+                    Debug.Log("Player has died.");
+                }
             }
         }
         if (collision.CompareTag("HealthPickup"))
@@ -107,6 +106,11 @@ public class PlayerController : MonoBehaviour
         {
             StarManager.Instance.AddPoints(1);
         }
+    }
+    private IEnumerator ShowGameOverAfterAnimation()
+    {
+        yield return new WaitForSeconds(2f); // Wait for the destruction animation to finish
+        CanvasManager.Instance.ShowGameOverMenu();
     }
 
     private void HandleMovement()

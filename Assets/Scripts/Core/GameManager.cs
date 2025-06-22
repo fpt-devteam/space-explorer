@@ -32,20 +32,6 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         CurrentState = GameState.GameOver;
-
-        // int finalScore = ScoreManager.Instance?.GetScore() ?? 0;
-        // bool isHighScore = false;
-
-        // if (HighScoreManager.Instance != null)
-        // {
-        //     isHighScore = HighScoreManager.Instance.AddScore(finalScore);
-        // }
-
-        // OnGameEnded?.Invoke(finalScore, isHighScore);
-
-        // Debug.Log(isHighScore
-        //     ? $"🎉 NEW HIGH SCORE! {finalScore}"
-        //     : $"Game Over. Final Score: {finalScore}");
     }
 
     public void ReturnToMenu()
@@ -58,14 +44,6 @@ public class GameManager : MonoBehaviour
         if (CurrentState == GameState.Playing)
         {
             CurrentState = GameState.Pausing;
-            Time.timeScale = 0f;
-
-            //Stop all active spawners
-            AsteroidSpawner spawners = FindObjectOfType<AsteroidSpawner>();
-            if (spawners != null)
-            {
-                spawners.StopSpawning();
-            }
         }
     }
     public void ResumeGame()
@@ -80,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         CurrentState = GameState.Playing;
+        CanvasManager.Instance?.HideGameOverMenu();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
