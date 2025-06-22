@@ -7,6 +7,7 @@ public class FireAsteroid : MonoBehaviour
   [SerializeField] private float minSpeed = 1f;
   [SerializeField] private float maxSpeed = 5f;
   [SerializeField] private GameObject flameEffect;
+
   private Rigidbody2D rb;
   private Player player;
   private Animator animator;
@@ -17,9 +18,11 @@ public class FireAsteroid : MonoBehaviour
     {
       flameEffect = transform.Find("Fire")?.gameObject;
     }
+
     player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     animator = GetComponent<Animator>();
   }
+
   private void Start()
   {
     if (player)
@@ -31,7 +34,7 @@ public class FireAsteroid : MonoBehaviour
       float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
       transform.rotation = Quaternion.Euler(0, 0, angle + 180f);
 
-      Vector2 movementDir = (player.transform.position - transform.position).normalized;
+      Vector2 movementDir = direction.normalized;
       rb.linearVelocity = movementDir * speed;
     }
   }
@@ -53,6 +56,12 @@ public class FireAsteroid : MonoBehaviour
       rb.linearVelocity = Vector2.zero;
 
     StartCoroutine(DestroyAfterAnimation());
+
+    CollectibleSpawner spawner = FindFirstObjectByType<CollectibleSpawner>();
+    if (spawner != null)
+    {
+      spawner.SpawnCollectibleAt(transform.position);
+    }
   }
 
   private IEnumerator DestroyAfterAnimation()
