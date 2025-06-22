@@ -10,7 +10,6 @@ public class Asteroid : MonoBehaviour
     private Spaceship player;
     private Animator animator;
 
-
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Spaceship>();
@@ -33,17 +32,12 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    private bool isDead = false;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))
         {
-            if (isDead) return;
-            isDead = true;
-            Destroy(collision.gameObject);
             print("Asteroid hit by bullet");
-
+            Destroy(collision.gameObject);
             ScoreManager.Instance.AddPoints(1);
 
             if (animator)
@@ -60,13 +54,5 @@ public class Asteroid : MonoBehaviour
     {
         yield return new WaitForSeconds(0.8f);
         Destroy(gameObject);
-    }
-
-    public void SetSpeed(float speed)
-    {
-        if (rb != null)
-        {
-            rb.linearVelocity = rb.linearVelocity.normalized * speed;
-        }
     }
 }

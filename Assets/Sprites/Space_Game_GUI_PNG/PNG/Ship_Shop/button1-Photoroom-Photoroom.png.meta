@@ -409,7 +409,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button1-Photoroom-Photoroom_0: 70500732419882229
+      button1-Photoroom-Photoroom_1: -4325332114501142813
+      button1-Photoroom-Photoroom_10: 8952182500215959258
+      button1-Photoroom-Photoroom_11: -7270769818989604466
+      button1-Photoroom-Photoroom_2: -565956921577166179
+      button1-Photoroom-Photoroom_3: 1537478081810800759
+      button1-Photoroom-Photoroom_4: -2316803753989186866
+      button1-Photoroom-Photoroom_5: -890549683815053574
+      button1-Photoroom-Photoroom_6: -1987755899595300884
+      button1-Photoroom-Photoroom_7: 8485418714178917410
+      button1-Photoroom-Photoroom_8: 4277653790867041359
+      button1-Photoroom-Photoroom_9: 6427221738834386013
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

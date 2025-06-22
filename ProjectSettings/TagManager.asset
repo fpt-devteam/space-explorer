@@ -12,7 +12,13 @@ TagManager:
   - AsteroidSpawner
   - GameManager
   - Star
-  - 'ChooseShipPanel '
+  - Background
+  - ShieldPickup
+  - StaminaPickup
+  - StarPickup
+  - HealthPickup
+  - EnemyBullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

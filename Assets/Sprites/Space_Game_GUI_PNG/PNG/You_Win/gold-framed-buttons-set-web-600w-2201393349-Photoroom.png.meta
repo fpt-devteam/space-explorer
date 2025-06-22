@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gold-framed-buttons-set-web-600w-2201393349-Photoroom_0: -938958322050616035
+      gold-framed-buttons-set-web-600w-2201393349-Photoroom_1: -4229941386021000125
+      gold-framed-buttons-set-web-600w-2201393349-Photoroom_2: 1383191657351055937
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
