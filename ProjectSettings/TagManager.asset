@@ -17,6 +17,8 @@ TagManager:
   - StaminaPickup
   - StarPickup
   - HealthPickup
+  - EnemyBullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

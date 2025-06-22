@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
         // skillSystem.ExecuteSkill(SkillType.DefaultShoot, player);
     }
+
     private IEnumerator ShootCoroutine()
     {
         while (isShooting && spaceship != null)

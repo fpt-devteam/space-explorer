@@ -22,18 +22,6 @@ public class SkillSystem : MonoBehaviour
 
   public void ExecuteSkill(SkillType type, Player player)
   {
-    bool isCooldown = false;
-
-    if (skillMap.TryGetValue(type, out var skill))
-    {
-      isCooldown = Time.time - skill.lastUseTime < skill.cooldown;
-    }
-
-    Debug.Log($" Executing skill: {type}, Cooldown: {isCooldown}, Stamina Cost: {skill?.staminaCost ?? 0}");
-
-    if (!isCooldown && skill.CanUse(player.currentStamina))
-    {
-      skill.Execute();
-    }
+    skillMap[type].Execute();
   }
 }
