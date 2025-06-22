@@ -12,6 +12,11 @@ TagManager:
   - AsteroidSpawner
   - GameManager
   - Star
+  - Background
+  - ShieldPickup
+  - StaminaPickup
+  - StarPickup
+  - HealthPickup
   layers:
   - Default
   - TransparentFX
