@@ -38,22 +38,22 @@ public class GameManager : MonoBehaviour
         CurrentState = GameState.GameOver;
 
         // Handle high score submission
-        if (ScoreManager.Instance != null && HighScoreManager.Instance != null)
-        {
-            int finalScore = ScoreManager.Instance.Score;
-            bool isHighScore = HighScoreManager.Instance.AddScore(finalScore);
+        // if (ScoreManager.Instance != null && HighScoreManager.Instance != null)
+        // {
+        //     int finalScore = ScoreManager.Instance.Score;
+        //     bool isHighScore = HighScoreManager.Instance.AddScore(finalScore);
 
-            OnGameEnded?.Invoke(finalScore, isHighScore);
+        //     OnGameEnded?.Invoke(finalScore, isHighScore);
 
-            if (isHighScore)
-            {
-                Debug.Log($"🎉 NEW HIGH SCORE! {finalScore}");
-            }
-            else
-            {
-                Debug.Log($"Game Over. Final Score: {finalScore}");
-            }
-        }
+        //     if (isHighScore)
+        //     {
+        //         Debug.Log($"🎉 NEW HIGH SCORE! {finalScore}");
+        //     }
+        //     else
+        //     {
+        //         Debug.Log($"Game Over. Final Score: {finalScore}");
+        //     }
+        // }
     }
 
     public void ReturnToMenu()

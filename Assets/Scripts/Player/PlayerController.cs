@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.CompareTag("StarPickup"))
         {
-            // player.StarCount += 1;
+            ScoreManager.Instance.AddPoints(1);
         }
     }
 

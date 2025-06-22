@@ -36,18 +36,5 @@ public class Spaceship : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if (collision.CompareTag("Asteroid"))
-        // {
-        //     print("Spaceship Hit by asteroid!");
-        //     // GameManager.Instance.EndGame();
-        //     //Get GameOverUI and show it
-
-        //     // gameOverUI.ShowGameOver();
-        // }
-        // else if (collision.CompareTag("Star"))
-        // {
-        //     ScoreManager.Instance.AddPoints(1);
-        //     Destroy(collision.gameObject);
-        // }
     }
 }
