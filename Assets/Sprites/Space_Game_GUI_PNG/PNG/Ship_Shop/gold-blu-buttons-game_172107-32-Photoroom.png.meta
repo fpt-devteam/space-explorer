@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 0614bb56732f1ad478939a478c1ebc9f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8901440801642304541
+    second: gold-blu-buttons-game_172107-32-Photoroom_0
+  - first:
+      213: -1527024309870907636
+    second: gold-blu-buttons-game_172107-32-Photoroom_1
+  - first:
+      213: 2867973402169450705
+    second: gold-blu-buttons-game_172107-32-Photoroom_2
+  - first:
+      213: -7321849338150691639
+    second: gold-blu-buttons-game_172107-32-Photoroom_3
+  - first:
+      213: -1073018626124536116
+    second: gold-blu-buttons-game_172107-32-Photoroom_4
+  - first:
+      213: -2274720353917604261
+    second: gold-blu-buttons-game_172107-32-Photoroom_5
+  - first:
+      213: -6638781984268608751
+    second: gold-blu-buttons-game_172107-32-Photoroom_6
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gold-blu-buttons-game_172107-32-Photoroom_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 419
+        width: 90
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d14de0b4f35488b70800000000000000
+      internalID: 8901440801642304541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold-blu-buttons-game_172107-32-Photoroom_1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 439
+        width: 131
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f22ce0b7beecae0800000000000000
+      internalID: -1527024309870907636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold-blu-buttons-game_172107-32-Photoroom_2
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 438
+        width: 148
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d024953d961dc720800000000000000
+      internalID: 2867973402169450705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold-blu-buttons-game_172107-32-Photoroom_3
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 420
+        width: 90
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cc599cd1d0936a90800000000000000
+      internalID: -7321849338150691639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold-blu-buttons-game_172107-32-Photoroom_4
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 214
+        width: 229
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc62870ae3fdb11f0800000000000000
+      internalID: -1073018626124536116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold-blu-buttons-game_172107-32-Photoroom_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 214
+        width: 229
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5ee36dd3e19e60e0800000000000000
+      internalID: -2274720353917604261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold-blu-buttons-game_172107-32-Photoroom_6
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 45
+        width: 498
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11b186685fe4ed3a0800000000000000
+      internalID: -6638781984268608751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      gold-blu-buttons-game_172107-32-Photoroom_0: 8901440801642304541
+      gold-blu-buttons-game_172107-32-Photoroom_1: -1527024309870907636
+      gold-blu-buttons-game_172107-32-Photoroom_2: 2867973402169450705
+      gold-blu-buttons-game_172107-32-Photoroom_3: -7321849338150691639
+      gold-blu-buttons-game_172107-32-Photoroom_4: -1073018626124536116
+      gold-blu-buttons-game_172107-32-Photoroom_5: -2274720353917604261
+      gold-blu-buttons-game_172107-32-Photoroom_6: -6638781984268608751
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
