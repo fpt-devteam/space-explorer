@@ -16,8 +16,8 @@ public class MiniBossStateMachine
   private MiniBossState currentState;
   private float stateTimer;
   private float targetingDuration = 4f; // Time to target player before returning
-  private float distanceToTarget = 10f; // Distance to target before changing to targeting state
-  private float distanceToMainBoss = 10f; // Distance to main boss before changing to returning state
+  private float distanceToTarget = 6f; // Distance to target before changing to targeting state
+  private float distanceToMainBoss = 6f; // Distance to main boss before changing to returning state
 
   public MiniBossState CurrentState => currentState;
 
@@ -103,18 +103,27 @@ public class MiniBossStateMachine
 
   private void CheckStateTransitions()
   {
+    if (currentState == MiniBossState.Orbiting)
+    {
+      Debug.Log($"Distance to main boss: {Vector3.Distance(miniBoss.transform.position, miniBoss.MainBoss.transform.position)}");
+      Debug.Log($"Is near orbit position: {miniBoss.IsNearOrbitPosition()}");
+      Debug.Log($"Distance to player: {Vector3.Distance(miniBoss.transform.position, miniBoss.Player.transform.position)}");
+      Debug.Log($"Is in attack range: {miniBoss.IsInAttackRange()}");
+      Debug.Log($"State: {currentState}");
+      Debug.Log("--------------------------------");
+    }
+
     switch (currentState)
     {
       case MiniBossState.Orbiting:
-        if (Vector3.Distance(miniBoss.transform.position, miniBoss.Player.transform.position) > distanceToTarget)
+        if (Vector3.Distance(miniBoss.transform.position, miniBoss.Player.transform.position) < distanceToTarget)
         {
           ChangeState(MiniBossState.Targeting);
         }
         break;
 
       case MiniBossState.Targeting:
-        // Return to orbit after go to far from main boss
-        if (Vector3.Distance(miniBoss.transform.position, miniBoss.MainBoss.transform.position) > distanceToMainBoss && miniBoss.IsNearOrbitPosition())
+        if (Vector3.Distance(miniBoss.transform.position, miniBoss.MainBoss.transform.position) > distanceToMainBoss)
         {
           ChangeState(MiniBossState.Returning);
         }

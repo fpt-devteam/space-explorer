@@ -21,10 +21,11 @@ public class Spaceship : MonoBehaviour
 
     if (bulletPrefab && firePoint)
     {
-      GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-      Projectile projectile = bullet.GetComponent<Projectile>();
-      projectile.direction = (firePoint.position - transform.position).normalized;
+      GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(Vector3.forward, firePoint.position - transform.position));
       bullet.tag = "PlayerBullet";
+
+      Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+      bulletRb.linearVelocity = (firePoint.position - transform.position).normalized * bulletSpeed;
     }
   }
   public void SpecialShoot()
@@ -33,5 +34,10 @@ public class Spaceship : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
+    if (collision.gameObject.CompareTag("EnemyBullet"))
+    {
+      health.UseHealth(1);
+      Destroy(collision.gameObject);
+    }
   }
 }

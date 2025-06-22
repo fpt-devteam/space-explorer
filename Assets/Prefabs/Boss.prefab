@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1680127288834823689}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.54, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -140,6 +140,7 @@ MonoBehaviour:
   currentHealth: 0
   firePoint: {fileID: 2837989194038738097}
   laserPrefab: {fileID: 1894291689271604418, guid: 3493d85cdd60ce04da291389e0042b98, type: 3}
+  healthSlider: {fileID: 0}
 --- !u!114 &4057783910844590309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcdd9a50c1f44643991167ab6a1a609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniBossPrefab: {fileID: 0}
+  miniBossPrefab: {fileID: 561737742507946812, guid: 16523160726e80c44bcc31fa704a091f, type: 3}
   spawnRadius: 2.5
   maxMiniBosses: 2
   phase1SpawnInterval: 15
