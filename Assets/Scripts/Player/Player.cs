@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
   void Awake()
   {
-    currentHealth = 0;
-    currentStamina = 0;
+    currentHealth = baseHealth;
+    currentStamina = 0f;
   }
 }

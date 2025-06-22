@@ -11,10 +11,10 @@ public enum SkillType
 public class PlayerController : MonoBehaviour
 {
   private Player player;
-  private SkillSystem skillSystem;
   private Spaceship spaceship;
   private Rigidbody2D rb;
   private bool isShooting;
+  private Animator animator;
   [SerializeField] private float shootInterval = 0.9f;
 
   private void Awake()
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     player = GetComponent<Player>();
     rb = GetComponent<Rigidbody2D>();
     spaceship = GetComponent<Spaceship>();
-    skillSystem = GetComponent<SkillSystem>();
+    animator = player.GetComponent<Animator>();
   }
 
   private void Start()
@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
 
     // skillSystem.ExecuteSkill(SkillType.DefaultShoot, player);
   }
-
   private IEnumerator ShootCoroutine()
   {
     while (isShooting && spaceship != null)
@@ -72,11 +71,18 @@ public class PlayerController : MonoBehaviour
       else
       {
         player.currentHealth -= 10f;
+        if (player.currentHealth <= 0f)
+        {
+          animator.Play("Destruction");
+          GameManager.Instance.EndGame();
+          StartCoroutine(ShowGameOverAfterAnimation());
+          Debug.Log("Player has died.");
+        }
       }
     }
     if (collision.CompareTag("HealthPickup"))
     {
-      player.currentHealth += 10f;
+      player.currentHealth += 50f;
     }
     if (collision.CompareTag("StaminaPickup"))
     {
@@ -88,8 +94,13 @@ public class PlayerController : MonoBehaviour
     }
     else if (collision.CompareTag("StarPickup"))
     {
-      ScoreManager.Instance.AddPoints(1);
+      StarManager.Instance.AddPoints(1);
     }
+  }
+  private IEnumerator ShowGameOverAfterAnimation()
+  {
+    yield return new WaitForSeconds(2f); // Wait for the destruction animation to finish
+    CanvasManager.Instance.ShowGameOverMenu();
   }
 
   private void HandleMovement()
