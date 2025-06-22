@@ -2,15 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public enum GameState { MainMenu, Playing, GameOver }
+public enum GameState { MainMenu, Playing, Pausing, GameOver }
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
-
-    // Events
-    public event Action<int, bool> OnGameEnded; // finalScore, isHighScore
+    public event Action<int, bool> OnGameEnded;
 
     private void Awake()
     {
@@ -19,6 +17,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
         CurrentState = GameState.MainMenu;
@@ -27,33 +26,26 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         CurrentState = GameState.Playing;
-        if (ScoreManager.Instance != null)
-        {
-            ScoreManager.Instance.ResetScore();
-        }
+        ScoreManager.Instance?.ResetScore();
     }
 
     public void EndGame()
     {
         CurrentState = GameState.GameOver;
 
-        // Handle high score submission
-        // if (ScoreManager.Instance != null && HighScoreManager.Instance != null)
+        // int finalScore = ScoreManager.Instance?.GetScore() ?? 0;
+        // bool isHighScore = false;
+
+        // if (HighScoreManager.Instance != null)
         // {
-        //     int finalScore = ScoreManager.Instance.Score;
-        //     bool isHighScore = HighScoreManager.Instance.AddScore(finalScore);
-
-        //     OnGameEnded?.Invoke(finalScore, isHighScore);
-
-        //     if (isHighScore)
-        //     {
-        //         Debug.Log($"🎉 NEW HIGH SCORE! {finalScore}");
-        //     }
-        //     else
-        //     {
-        //         Debug.Log($"Game Over. Final Score: {finalScore}");
-        //     }
+        //     isHighScore = HighScoreManager.Instance.AddScore(finalScore);
         // }
+
+        // OnGameEnded?.Invoke(finalScore, isHighScore);
+
+        // Debug.Log(isHighScore
+        //     ? $"🎉 NEW HIGH SCORE! {finalScore}"
+        //     : $"Game Over. Final Score: {finalScore}");
     }
 
     public void ReturnToMenu()
@@ -61,9 +53,33 @@ public class GameManager : MonoBehaviour
         CurrentState = GameState.MainMenu;
     }
 
+    public void PauseGame()
+    {
+        if (CurrentState == GameState.Playing)
+        {
+            CurrentState = GameState.Pausing;
+            Time.timeScale = 0f;
+
+            //Stop all active spawners
+            AsteroidSpawner spawners = FindObjectOfType<AsteroidSpawner>();
+            if (spawners != null)
+            {
+                spawners.StopSpawning();
+            }
+        }
+    }
+    public void ResumeGame()
+    {
+        if (CurrentState == GameState.Pausing)
+        {
+            CurrentState = GameState.Playing;
+            Time.timeScale = 1f;
+        }
+    }
+
     public void RestartGame()
     {
-        StartGame();
+        CurrentState = GameState.Playing;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

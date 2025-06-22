@@ -11,7 +11,6 @@ public enum SkillType
 public class PlayerController : MonoBehaviour
 {
     private Player player;
-    private SkillSystem skillSystem;
     private Spaceship spaceship;
     private Rigidbody2D rb;
     private bool isShooting;
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         spaceship = GetComponent<Spaceship>();
-        skillSystem = GetComponent<SkillSystem>();
     }
 
     private void Start()
@@ -33,11 +31,26 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.CurrentState == GameState.Pausing)
+        {
+            return;
+        }
+
         HandleMovement();
         HandleSkills();
     }
     private void HandleSkills()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.Instance.PauseGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            GameManager.Instance.ResumeGame();
+        }
+
         // if (Input.GetKeyDown(KeyCode.Space))
         // {
         //     skillSystem.ExecuteSkill(SkillType.SpecialShoot, player);
@@ -51,6 +64,11 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator ShootCoroutine()
     {
+        if (GameManager.Instance.CurrentState == GameState.Pausing)
+        {
+            yield break;
+        }
+
         while (isShooting && spaceship != null)
         {
             spaceship.Shoot();
@@ -70,13 +88,11 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Player hit by asteroid, reducing health.");
                 player.currentHealth -= 10f;
             }
         }
         if (collision.CompareTag("HealthPickup"))
         {
-            Debug.Log("Player picked up health.");
             player.currentHealth += 50f;
         }
         if (collision.CompareTag("StaminaPickup"))
