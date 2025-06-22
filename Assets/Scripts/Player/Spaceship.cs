@@ -20,7 +20,11 @@ public class Spaceship : MonoBehaviour
     public void Shoot()
     {
         if (GameManager.Instance.CurrentState == GameState.GameOver) return;
+        if (!bulletPrefab)
+            Debug.LogError("bulletPrefab is null!");
 
+        if (!firePoint)
+            Debug.LogError("firePoint is null!");
         if (bulletPrefab && firePoint)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

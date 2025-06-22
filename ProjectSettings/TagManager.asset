@@ -12,6 +12,7 @@ TagManager:
   - AsteroidSpawner
   - GameManager
   - Star
+  - 'ChooseShipPanel '
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 public enum GameState { MainMenu, Playing, GameOver }
 
@@ -37,7 +38,6 @@ public class GameManager : MonoBehaviour
     {
         CurrentState = GameState.GameOver;
 
-        // Handle high score submission
         if (ScoreManager.Instance != null && HighScoreManager.Instance != null)
         {
             int finalScore = ScoreManager.Instance.Score;
@@ -65,5 +65,16 @@ public class GameManager : MonoBehaviour
     {
         StartGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void SetPanelActive(GameObject panel)
+    {
+        if (panel != null)
+        {
+            panel.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning($"Panel is null, it.");
+        }
     }
 }
