@@ -70,12 +70,14 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                Debug.Log("Player hit by asteroid, reducing health.");
                 player.currentHealth -= 10f;
             }
         }
         if (collision.CompareTag("HealthPickup"))
         {
-            player.currentHealth += 10f;
+            Debug.Log("Player picked up health.");
+            player.currentHealth += 50f;
         }
         if (collision.CompareTag("StaminaPickup"))
         {
