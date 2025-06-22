@@ -1,15 +1,22 @@
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
-    public int Score { get; private set; }
-    public event Action<int> OnScoreChanged;
+
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText;
+
+    private int score = 0;
+    private int highScore = 0;
 
     private void Awake()
     {
-        print(this.name + " Awake called");
+        Debug.Log("ScoreManager: Awake called");
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -17,28 +24,30 @@ public class ScoreManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
-        Score = 0;
+
+        UpdateUI();
     }
 
     public void AddPoints(int points)
     {
-        Score += points;
+        score += points;
 
-        print($"ScoreManager: Added {points} points. New score: {Score}");
-        OnScoreChanged?.Invoke(Score);
-    }
+        UpdateUI();
 
-    public void DeductPoints(int points)
-    {
-        Score -= points;
-        if (Score < 0) Score = 0;
-        OnScoreChanged?.Invoke(Score);
+        Debug.Log($"ScoreManager: Added {points} points. New score: {score}");
     }
 
     public void ResetScore()
     {
-        Score = 0;
-        OnScoreChanged?.Invoke(Score);
+        score = 0;
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        if (scoreText != null)
+            scoreText.text = $"Score: {score}";
+        if (highScoreText != null)
+            highScoreText.text = $"High Score: {highScore}";
     }
 }

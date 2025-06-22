@@ -5,17 +5,15 @@ public class Spaceship : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float bulletSpeed = 2f;
-    [SerializeField] private GameOverUI gameOverUI;
-
+    private HealthSystem health;
+    private StaminaSystem stamina;
+    private ShieldSystem shield;
 
     void Awake()
     {
-        GameObject uiObject = GameObject.FindWithTag("GameManager");
-        if (uiObject != null)
-        {
-            gameOverUI = uiObject.GetComponent<GameOverUI>();
-        }
-
+        health = GetComponent<HealthSystem>();
+        stamina = GetComponent<StaminaSystem>();
+        shield = GetComponent<ShieldSystem>();
     }
     public void Shoot()
     {
@@ -32,21 +30,11 @@ public class Spaceship : MonoBehaviour
             }
         }
     }
+    public void SpecialShoot()
+    {
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Asteroid"))
-        {
-            print("Spceship Hit by asteroid!");
-            GameManager.Instance.EndGame();
-            //Get GameOverUI and show it
-
-            gameOverUI.ShowGameOver();
-        }
-        else if (collision.CompareTag("Star"))
-        {
-            ScoreManager.Instance.AddPoints(1);
-            Destroy(collision.gameObject);
-        }
     }
 }
