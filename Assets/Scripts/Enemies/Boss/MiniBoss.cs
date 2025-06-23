@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Mini boss that spawns during boss phases
@@ -23,6 +24,9 @@ public class MiniBoss : MonoBehaviour
   [SerializeField] private float attackRange = 6f;
   [SerializeField] private GameObject projectilePrefab;
   [SerializeField] private Transform firePoint;
+
+  [Header("UI Components")]
+  [SerializeField] private Slider healthSlider;
 
   private Transform mainBoss;
   private GameObject player;
@@ -55,12 +59,15 @@ public class MiniBoss : MonoBehaviour
 
     // Initialize state machine
     stateMachine = new MiniBossStateMachine(this);
+
+    // Initialize health slider
+    UpdateHealthSlider();
   }
 
   private void Start()
   {
     // Find main boss and set orbit center
-    Boss boss = FindObjectOfType<Boss>();
+    Boss boss = Object.FindObjectOfType<Boss>();
     if (boss != null)
     {
       mainBoss = boss.transform;
@@ -80,11 +87,17 @@ public class MiniBoss : MonoBehaviour
     {
       orbitCenter = mainBoss.position;
     }
+
+    // Keep health slider facing camera if it exists
+    UpdateHealthSliderOrientation();
   }
 
   public void TakeDamage(float damageAmount)
   {
     currentHealth = Mathf.Max(0, currentHealth - damageAmount);
+
+    // Update health slider
+    UpdateHealthSlider();
 
     if (currentHealth <= 0)
     {
@@ -92,9 +105,49 @@ public class MiniBoss : MonoBehaviour
     }
   }
 
+  private void UpdateHealthSlider()
+  {
+    if (healthSlider != null)
+    {
+      healthSlider.value = HealthPercentage;
+
+      // Optional: Change slider color based on health
+      Image fillImage = healthSlider.fillRect.GetComponent<Image>();
+      if (fillImage != null)
+      {
+        if (HealthPercentage > 0.6f)
+          fillImage.color = Color.green;
+        else if (HealthPercentage > 0.3f)
+          fillImage.color = Color.yellow;
+        else
+          fillImage.color = Color.red;
+      }
+    }
+  }
+
+  private void UpdateHealthSliderOrientation()
+  {
+    // Keep health slider facing the camera
+    if (healthSlider != null)
+    {
+      Camera mainCamera = Camera.main;
+      if (mainCamera != null)
+      {
+        healthSlider.transform.LookAt(mainCamera.transform);
+        healthSlider.transform.Rotate(0, 180, 0); // Flip it to face the camera properly
+      }
+    }
+  }
+
   private void Die()
   {
     Debug.Log("Mini boss defeated!");
+
+    // Hide health slider when mini boss dies
+    if (healthSlider != null)
+    {
+      healthSlider.gameObject.SetActive(false);
+    }
 
     // Add score
     if (ScoreManager.Instance != null)
@@ -177,7 +230,7 @@ public class MiniBoss : MonoBehaviour
     Vector3 direction = (player.transform.position - firePoint.position).normalized;
 
     GameObject projectile = Instantiate(projectilePrefab, firePoint.position,
-        Quaternion.LookRotation(Vector3.forward, direction));
+    Quaternion.LookRotation(Vector3.forward, direction));
 
     // Set projectile properties
     Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
@@ -222,25 +275,25 @@ public class MiniBoss : MonoBehaviour
   {
     if (collision.CompareTag("PlayerBullet"))
     {
-      TakeDamage(10f); // Standard bullet damage
+      TakeDamage(50f);
       Destroy(collision.gameObject);
     }
     else if (collision.CompareTag("Player"))
     {
-      // Damage player on contact
       Player playerScript = collision.GetComponent<Player>();
       if (playerScript != null)
       {
-        // Handle player damage - this depends on your player damage system
-        if (playerScript.isShieldActive)
+        if (playerScript.currentShield > 0f)
         {
-          playerScript.isShieldActive = false;
+          playerScript.currentShield -= 1;
         }
         else
         {
-          playerScript.currentHealth -= damage;
+          playerScript.currentHealth = 0;
         }
       }
+
+      Die();
     }
   }
 

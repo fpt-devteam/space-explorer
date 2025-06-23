@@ -1,28 +1,25 @@
 using UnityEngine;
 
-public class HealthPickup : MonoBehaviour
+public class HealthPickup : CollectibleObject
 {
-  [SerializeField] private int healthAmount = 25;
+  [SerializeField] private int healthAmount = 1;
 
-  public void Collect(GameObject collector)
+  public override void Collect(GameObject collector)
   {
     var playerHealth = collector.GetComponent<Player>();
     if (playerHealth != null)
     {
-      playerHealth.currentHealth += healthAmount;
+      playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth + healthAmount, playerHealth.maxHealth);
     }
   }
 
-  /// <summary>
-  /// Handles collision with the player or other collectors.
-  /// </summary>
-  /// <param name="other">The collider that entered the trigger.</param>
-  private void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter2D(Collider2D other)
   {
-    // Check if the colliding object is the player
     if (other.CompareTag("Player"))
     {
+      Debug.Log("Health collected by Player!");
       Collect(other.gameObject);
+      Destroy(gameObject);
     }
   }
 }

@@ -49,10 +49,12 @@ public class AsteroidSpawner : MonoBehaviour
 
         Instantiate(asteroidPrefab, spawnPos, Quaternion.identity);
     }
+
     public void StopSpawning()
     {
         spawning = false;
     }
+
     private Vector2 RandomPointInCircle(float radius)
     {
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;

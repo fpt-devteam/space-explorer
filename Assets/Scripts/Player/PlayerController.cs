@@ -3,121 +3,159 @@ using UnityEngine;
 
 public enum SkillType
 {
-    DefaultShoot,
-    SpecialShoot
+  DefaultShoot,
+  SpecialShoot
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
+
 public class PlayerController : MonoBehaviour
 {
-    private Player player;
-    private SkillSystem skillSystem;
-    private Spaceship spaceship;
-    private Rigidbody2D rb;
-    private bool isShooting;
-    [SerializeField] private float shootInterval = 0.9f;
+  private Player player;
+  private Spaceship spaceship;
+  private Rigidbody2D rb;
+  private bool isShooting;
+  private Animator animator;
+  private bool isInvincible = false;
+  private float invincibleTimer = 0f;
+  [SerializeField] private float invincibleDuration = 3f;
+  [SerializeField] private float shootInterval = 0.9f;
+  [SerializeField] private CanvasManager canvasManager;
 
-    private void Awake()
+  public void Restart()
+  {
+    isInvincible = false;
+    invincibleTimer = 0f;
+    isShooting = true;
+    player.InitStats();
+  }
+
+  private void Awake()
+  {
+    player = GetComponent<Player>();
+    rb = GetComponent<Rigidbody2D>();
+    spaceship = GetComponent<Spaceship>();
+    animator = player.GetComponent<Animator>();
+  }
+  private void Start()
+  {
+    isShooting = true;
+    StartCoroutine(ShootCoroutine());
+  }
+  private void Update()
+  {
+    if (isInvincible)
     {
-        player = GetComponent<Player>();
-        rb = GetComponent<Rigidbody2D>();
-        spaceship = GetComponent<Spaceship>();
-        skillSystem = GetComponent<SkillSystem>();
+      invincibleTimer += Time.deltaTime;
+      if (invincibleTimer >= invincibleDuration)
+      {
+        isInvincible = false;
+        invincibleTimer = 0f;
+      }
     }
 
-    private void Start()
+    canvasManager.UpdateHealthBar(player.currentHealth);
+    canvasManager.UpdateShieldBar(player.currentShield);
+
+    HandleMovement();
+    HandleSkills();
+  }
+  private void HandleSkills()
+  {
+
+  }
+  private IEnumerator ShootCoroutine()
+  {
+    print($"Shooting started. {spaceship != null} {isShooting} {shootInterval}");
+    while (isShooting && spaceship != null)
     {
-        isShooting = true;
-        StartCoroutine(ShootCoroutine());
+      spaceship.Shoot();
+      yield return new WaitForSeconds(shootInterval);
     }
+  }
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    Debug.Log("Player collided with: " + collision.gameObject.name);
 
-    private void Update()
+    if (collision.CompareTag("Asteroid") || collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet"))
     {
-        HandleMovement();
-        HandleSkills();
+      if (player.currentShield > 0f)
+      {
+        OnDeductShield(1);
+        OnInvincibility();
+      }
+      else
+      {
+        OnDeductHealth(1);
+
+        if (player.currentHealth > 0f)
+        {
+          OnInvincibility();
+        }
+        else
+        {
+          OnExplode();
+        }
+      }
     }
-    private void HandleSkills()
+  }
+  private void OnInvincibility()
+  {
+    var spriteRenderer = spaceship.GetComponent<SpriteRenderer>();
+
+    if (isInvincible)
     {
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     skillSystem.ExecuteSkill(SkillType.SpecialShoot, player);
-        // }
-        // else
-        // {
-        //     skillSystem.ExecuteSkill(SkillType.DefaultShoot, player);
-        // }
-
-        // skillSystem.ExecuteSkill(SkillType.DefaultShoot, player);
+      invincibleTimer -= Time.deltaTime;
+      if (invincibleTimer <= 0f)
+      {
+        Debug.Log("Invincibility ended.");
+        isInvincible = false;
+        spriteRenderer.color = Color.white;
+      }
+      else
+      {
+        float t = Mathf.PingPong(Time.time * 5f, 1f);
+        spriteRenderer.color = Color.Lerp(Color.black, Color.yellow, t);
+      }
     }
+  }
+  private void OnDeductHealth(int healthAmount)
+  {
+    if (isInvincible) return;
+    player.currentHealth -= healthAmount;
+  }
+  private void OnDeductShield(int shieldAmount)
+  {
+    if (isInvincible) return;
+    player.currentShield -= shieldAmount;
+  }
+  private void OnExplode()
+  {
+    animator.Play("Destruction");
+    GameManager.Instance.EndGame();
+    StartCoroutine(ShowGameOverAfterAnimation());
+  }
+  private IEnumerator ShowGameOverAfterAnimation()
+  {
+    yield return new WaitForSeconds(2f);
+    canvasManager.ShowGameOverMenu();
+  }
+  private void HandleMovement()
+  {
+    float moveX = Input.GetAxis("Horizontal");
+    float moveY = Input.GetAxis("Vertical");
 
-    private IEnumerator ShootCoroutine()
+    Vector2 moveDir = new Vector2(moveX, moveY).normalized;
+    rb.linearVelocity = moveDir * player.MoveSpeed;
+
+    float baseRotationSpeed = 180f;
+    if (Input.GetMouseButton(0))
     {
-        while (isShooting && spaceship != null)
-        {
-            spaceship.Shoot();
-            yield return new WaitForSeconds(shootInterval);
-        }
+      transform.Rotate(0f, 0f, baseRotationSpeed * Time.deltaTime);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    if (Input.GetMouseButton(1))
     {
-        Debug.Log("Player collided with: " + collision.gameObject.name);
-
-        if (collision.CompareTag("Asteroid"))
-        {
-            if (player.isShieldActive)
-            {
-                player.isShieldActive = false;
-            }
-            else
-            {
-                player.currentHealth -= 10f;
-            }
-        }
-        if (collision.CompareTag("HealthPickup"))
-        {
-            player.currentHealth += 10f;
-        }
-        if (collision.CompareTag("StaminaPickup"))
-        {
-            player.currentStamina += 10f;
-        }
-        if (collision.CompareTag("ShieldPickup"))
-        {
-            player.isShieldActive = true;
-        }
-        else if (collision.CompareTag("StarPickup"))
-        {
-            ScoreManager.Instance.AddPoints(1);
-        }
+      transform.Rotate(0f, 0f, -baseRotationSpeed * Time.deltaTime);
     }
-
-    private void HandleMovement()
-    {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
-
-        Vector2 moveDir = new Vector2(moveX, moveY).normalized;
-        rb.linearVelocity = moveDir * player.MoveSpeed;
-
-        Vector2 clampedPos = rb.position;
-        float minX = -8f;
-        float maxX = 8f;
-        float minY = -4f;
-        float maxY = 4f;
-        clampedPos.x = Mathf.Clamp(clampedPos.x, minX, maxX);
-        clampedPos.y = Mathf.Clamp(clampedPos.y, minY, maxY);
-
-        rb.position = clampedPos;
-
-        float baseRotationSpeed = 180f;
-        if (Input.GetMouseButton(0))
-        {
-            transform.Rotate(0f, 0f, baseRotationSpeed * Time.deltaTime);
-        }
-        if (Input.GetMouseButton(1))
-        {
-            transform.Rotate(0f, 0f, -baseRotationSpeed * Time.deltaTime);
-        }
-    }
+  }
 }
