@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 27501310a75282e4b925e00e2961bfd7
+guid: 360f824aa01bd834dbd699aba38e4f0a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5971053441932891862
-    second: Kla'ed - Bomber - Base_0
+      213: 1251448593174391975
+    second: ok-Photoroom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kla'ed - Bomber - Base_0
+      name: ok-Photoroom_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 32
-        height: 29
+        x: 78
+        y: 145
+        width: 691
+        height: 1066
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a2967b2d78e822da0800000000000000
-      internalID: -5971053441932891862
+      spriteID: 7ac62d27dd90e5110800000000000000
+      internalID: 1251448593174391975
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Kla'ed - Bomber - Base_0: -5971053441932891862
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
