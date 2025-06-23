@@ -39,13 +39,13 @@ public class Asteroid : MonoBehaviour
     Destroy(collision.gameObject);
     ScoreManager.Instance.AddPoints(1);
 
-      if (animator)
-      {
-        animator.Play("Explode");
-      }
+    if (animator)
+    {
+      animator.Play("Explode");
+    }
 
-      rb.linearVelocity = Vector2.zero;
-      StartCoroutine(DestroyAfterAnimation());
+    rb.linearVelocity = Vector2.zero;
+    StartCoroutine(DestroyAfterAnimation());
   }
 
   private IEnumerator DestroyAfterAnimation()

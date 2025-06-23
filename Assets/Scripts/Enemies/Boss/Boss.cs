@@ -31,6 +31,7 @@ public class Boss : StateMachineController<Boss>
   public Transform FirePoint => firePoint;
   public GameObject LaserPrefab => laserPrefab;
   public MiniBossSpawner MiniBossSpawner => miniBossSpawner;
+  [SerializeField] private CanvasManager canvasManager;
 
   protected override void Awake()
   {
@@ -124,6 +125,7 @@ public class Boss : StateMachineController<Boss>
     }
 
     gameObject.SetActive(false);
+    canvasManager.ShowWinMenu();
   }
 
   public void FireLaser(Vector3 direction)

@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
   private float invincibleTimer = 0f;
   [SerializeField] private float invincibleDuration = 3f;
   [SerializeField] private float shootInterval = 0.9f;
+  [SerializeField] private CanvasManager canvasManager;
 
   public void Restart()
   {
@@ -43,8 +44,18 @@ public class PlayerController : MonoBehaviour
   }
   private void Update()
   {
-    CanvasManager.Instance.UpdateHealthBar(player.currentHealth);
-    CanvasManager.Instance.UpdateShieldBar(player.currentShield);
+    if (isInvincible)
+    {
+      invincibleTimer += Time.deltaTime;
+      if (invincibleTimer >= invincibleDuration)
+      {
+        isInvincible = false;
+        invincibleTimer = 0f;
+      }
+    }
+
+    canvasManager.UpdateHealthBar(player.currentHealth);
+    canvasManager.UpdateShieldBar(player.currentShield);
 
     HandleMovement();
     HandleSkills();
@@ -55,6 +66,7 @@ public class PlayerController : MonoBehaviour
   }
   private IEnumerator ShootCoroutine()
   {
+    print($"Shooting started. {spaceship != null} {isShooting} {shootInterval}");
     while (isShooting && spaceship != null)
     {
       spaceship.Shoot();
@@ -126,7 +138,7 @@ public class PlayerController : MonoBehaviour
   private IEnumerator ShowGameOverAfterAnimation()
   {
     yield return new WaitForSeconds(2f);
-    CanvasManager.Instance.ShowGameOverMenu();
+    canvasManager.ShowGameOverMenu();
   }
   private void HandleMovement()
   {
