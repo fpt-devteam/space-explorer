@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1990302214311338387}
   - component: {fileID: 2331498377139927692}
   - component: {fileID: 4605781463740208193}
-  - component: {fileID: 4780938505613478816}
   - component: {fileID: 8013709965573081402}
-  - component: {fileID: 6835705014971532302}
   - component: {fileID: 2306519206170529770}
+  - component: {fileID: 4780938505613478816}
+  - component: {fileID: 6835705014971532302}
   - component: {fileID: 7934610057339493347}
   m_Layer: 5
   m_Name: Spaceship
@@ -118,21 +118,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4780938505613478816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2329469927833669660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fd77904b3314147b6d8061d40486cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1894291689271604418, guid: 3493d85cdd60ce04da291389e0042b98, type: 3}
-  firePoint: {fileID: 623367199244091855}
-  bulletSpeed: 5
 --- !u!50 &8013709965573081402
 Rigidbody2D:
   serializedVersion: 5
@@ -160,20 +145,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6835705014971532302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2329469927833669660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 857a8d81ea5d93144946f0ecad37b043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldAnimator: {fileID: 0}
-  shootInterval: 1
 --- !u!61 &2306519206170529770
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -220,6 +191,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.15625, y: 1.40625}
   m_EdgeRadius: 0
+--- !u!114 &4780938505613478816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329469927833669660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fd77904b3314147b6d8061d40486cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1894291689271604418, guid: 3493d85cdd60ce04da291389e0042b98, type: 3}
+  firePoint: {fileID: 623367199244091855}
+  bulletSpeed: 5
+--- !u!114 &6835705014971532302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329469927833669660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857a8d81ea5d93144946f0ecad37b043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldAnimator: {fileID: 0}
+  shootInterval: 1
 --- !u!114 &7934610057339493347
 MonoBehaviour:
   m_ObjectHideFlags: 0
