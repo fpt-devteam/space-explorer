@@ -76,18 +76,27 @@ public class Boss : StateMachineController<Boss>
   {
     if (healthSlider != null)
     {
+      if (!healthSlider.gameObject.activeSelf)
+      {
+        healthSlider.gameObject.SetActive(true);
+      }
+      Image fillImage = healthSlider.fillRect.GetComponent<Image>();
       healthSlider.value = HealthPercentage;
 
-      // Optional: Change slider color based on health
-      Image fillImage = healthSlider.fillRect.GetComponent<Image>();
       if (fillImage != null)
       {
         if (HealthPercentage > 0.6f)
+        {
           fillImage.color = Color.green;
+        }
         else if (HealthPercentage > 0.3f)
+        {
           fillImage.color = Color.yellow;
+        }
         else
+        {
           fillImage.color = Color.red;
+        }
       }
     }
   }

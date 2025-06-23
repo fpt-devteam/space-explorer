@@ -9,7 +9,7 @@ public class HealthPickup : CollectibleObject
     var playerHealth = collector.GetComponent<Player>();
     if (playerHealth != null)
     {
-      playerHealth.currentHealth += healthAmount;
+      playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth + healthAmount, playerHealth.maxHealth);
     }
   }
 

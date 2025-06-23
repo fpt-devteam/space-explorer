@@ -12,7 +12,7 @@ public class ShieldPickup : CollectibleObject
     var playerShield = collector.GetComponent<Player>();
     if (playerShield != null)
     {
-      playerShield.currentShield += shieldAmount;
+      playerShield.currentShield = Mathf.Min(playerShield.currentShield + shieldAmount, playerShield.maxShield);
     }
   }
 

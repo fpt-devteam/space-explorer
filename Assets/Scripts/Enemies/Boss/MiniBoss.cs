@@ -275,7 +275,7 @@ public class MiniBoss : MonoBehaviour
   {
     if (collision.CompareTag("PlayerBullet"))
     {
-      TakeDamage(50f); 
+      TakeDamage(50f);
       Destroy(collision.gameObject);
     }
     else if (collision.CompareTag("Player"))
