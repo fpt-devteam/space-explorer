@@ -8,6 +8,7 @@ public enum SkillType
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
+
 public class PlayerController : MonoBehaviour
 {
   private Player player;
@@ -17,10 +18,16 @@ public class PlayerController : MonoBehaviour
   private Animator animator;
   private bool isInvincible = false;
   private float invincibleTimer = 0f;
-
   [SerializeField] private float invincibleDuration = 3f;
-
   [SerializeField] private float shootInterval = 0.9f;
+
+  public void Restart()
+  {
+    isInvincible = false;
+    invincibleTimer = 0f;
+    isShooting = true;
+    player.InitStats();
+  }
 
   private void Awake()
   {
@@ -29,13 +36,11 @@ public class PlayerController : MonoBehaviour
     spaceship = GetComponent<Spaceship>();
     animator = player.GetComponent<Animator>();
   }
-
   private void Start()
   {
     isShooting = true;
     StartCoroutine(ShootCoroutine());
   }
-
   private void Update()
   {
     HandleMovement();
@@ -43,22 +48,21 @@ public class PlayerController : MonoBehaviour
   }
   private void HandleSkills()
   {
+    var spriteRenderer = spaceship.GetComponent<SpriteRenderer>();
+
     if (isInvincible)
     {
       invincibleTimer -= Time.deltaTime;
       if (invincibleTimer <= 0f)
       {
-        isInvincible = false;
         Debug.Log("Invincibility ended.");
+        isInvincible = false;
+        spriteRenderer.color = Color.white;
       }
       else
       {
-        var spriteRenderer = spaceship.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-          float t = Mathf.PingPong(Time.time * 5f, 1f);
-          spriteRenderer.color = Color.Lerp(Color.black, Color.yellow, t);
-        }
+        float t = Mathf.PingPong(Time.time * 5f, 1f);
+        spriteRenderer.color = Color.Lerp(Color.black, Color.yellow, t);
       }
     }
   }
@@ -70,7 +74,6 @@ public class PlayerController : MonoBehaviour
       yield return new WaitForSeconds(shootInterval);
     }
   }
-
   private void OnTriggerEnter2D(Collider2D collision)
   {
     Debug.Log("Player collided with: " + collision.gameObject.name);
@@ -106,13 +109,11 @@ public class PlayerController : MonoBehaviour
       }
     }
   }
-
   private IEnumerator ShowGameOverAfterAnimation()
   {
     yield return new WaitForSeconds(2f);
     CanvasManager.Instance.ShowGameOverMenu();
   }
-
   private void HandleMovement()
   {
     float moveX = Input.GetAxis("Horizontal");

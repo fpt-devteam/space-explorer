@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Player : MonoBehaviour
 {
   [Header("Base Stats")]
@@ -23,6 +24,11 @@ public class Player : MonoBehaviour
   public float AttackSpeed => baseAttackSpeed;
 
   void Awake()
+  {
+    InitStats();
+  }
+
+  public void InitStats()
   {
     currentHealth = baseHealth;
     currentShield = baseShield;

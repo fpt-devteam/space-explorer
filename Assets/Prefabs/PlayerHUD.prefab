@@ -384,8 +384,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6443594480717852360}
+  - component: {fileID: 6910751792186451643}
   m_Layer: 5
-  m_Name: PlayerGUI
+  m_Name: PlayerHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,6 +416,40 @@ RectTransform:
   m_AnchoredPosition: {x: -328.4, y: 341.7}
   m_SizeDelta: {x: 408.953, y: 181.9523}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6910751792186451643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953425449647360943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae8ae77f0142d6459f40ebc4148360a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7934610057339493347, guid: 3f11adbef89bbec448d2e76e00c1e87a, type: 3}
+  healthPoints:
+  - {fileID: 5631303140218999489}
+  - {fileID: 6845192353874663524}
+  - {fileID: 71047684844397105}
+  - {fileID: 769306376857711566}
+  - {fileID: 1668238615852893739}
+  - {fileID: 9075354570870345301}
+  - {fileID: 575242470468710150}
+  - {fileID: 2490427546483020024}
+  - {fileID: 278478916514350338}
+  - {fileID: 2505668849209732177}
+  - {fileID: 4816310007114082557}
+  shieldPoints:
+  - {fileID: 2245261076802174652}
+  - {fileID: 1687357069944635970}
+  - {fileID: 3280170443428071795}
+  - {fileID: 6774132050117382903}
+  - {fileID: 8825110434563176579}
+  - {fileID: 4037564035601545829}
+  - {fileID: 5821331239554183897}
+  - {fileID: 242344590252149691}
 --- !u!1 &3111503700397179164
 GameObject:
   m_ObjectHideFlags: 0
