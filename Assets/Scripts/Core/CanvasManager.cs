@@ -5,6 +5,7 @@ public class CanvasManager : MonoBehaviour
   [SerializeField] private GameObject pauseMenu;
   [SerializeField] private GameObject gameOverMenu;
   [SerializeField] private GameObject settingsMenu;
+  [SerializeField] private GameObject playerHUD;
 
   private void Awake()
   {
@@ -47,6 +48,20 @@ public class CanvasManager : MonoBehaviour
     else
     {
       settingsMenu.SetActive(true);
+    }
+  }
+  public void UpdateHealthBar(int healthAmount)
+  {
+    if (playerHUD != null)
+    {
+      playerHUD.GetComponent<PlayerHUD>().ShowHealth(healthAmount);
+    }
+  }
+  public void UpdateShieldBar(int shieldAmount)
+  {
+    if (playerHUD != null)
+    {
+      playerHUD.GetComponent<PlayerHUD>().ShowShield(shieldAmount);
     }
   }
 }

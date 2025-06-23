@@ -289,7 +289,7 @@ public class MiniBoss : MonoBehaviour
         }
         else
         {
-          playerScript.currentHealth -= 100f;
+          playerScript.currentHealth = 0;
         }
       }
 

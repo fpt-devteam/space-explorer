@@ -5,8 +5,8 @@ public class PlayerManager : MonoBehaviour
   public static PlayerManager Instance { get; private set; }
 
   [Header("Player Ships")]
-  public Player[] playerShips;
-  private Player currentPlayerShip;
+  public GameObject[] playerShips;
+  private GameObject currentPlayerShip;
   private PlayerController playerController;
 
   private void Awake()
@@ -51,8 +51,8 @@ public class PlayerManager : MonoBehaviour
     switch (shipIndex)
     {
       case 0:
-        currentPlayerShip.currentHealth = currentPlayerShip.baseHealth;
-        currentPlayerShip.currentShield = currentPlayerShip.baseShield;
+        currentPlayerShip.GetComponent<Player>().currentHealth = currentPlayerShip.GetComponent<Player>().baseHealth;
+        currentPlayerShip.GetComponent<Player>().currentShield = currentPlayerShip.GetComponent<Player>().baseShield;
         break;
     }
   }

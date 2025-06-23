@@ -3,18 +3,35 @@ using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour
 {
-  public Player player;
   public Image[] healthPoints;
   public Image[] shieldPoints;
-  public void Update()
+
+  private void Start()
   {
-    for (int i = 1; i <= healthPoints.Length; i++)
+    if (healthPoints == null || healthPoints.Length == 0)
     {
-      healthPoints[i - 1].enabled = i <= player.currentHealth;
+      Debug.LogError("Health points not assigned in PlayerHUD.");
     }
-    for (int i = 1; i <= shieldPoints.Length; i++)
+
+    if (shieldPoints == null || shieldPoints.Length == 0)
     {
-      shieldPoints[i - 1].enabled = i <= player.currentShield;
+      Debug.LogError("Shield points not assigned in PlayerHUD.");
+    }
+  }
+
+  public void ShowHealth(int healthCounter)
+  {
+    for (int i = 0; i < healthPoints.Length; i++)
+    {
+      healthPoints[i].enabled = i < healthCounter;
+    }
+  }
+
+  public void ShowShield(int shieldCounter)
+  {
+    for (int i = 0; i < shieldPoints.Length; i++)
+    {
+      shieldPoints[i].enabled = i < shieldCounter;
     }
   }
 }

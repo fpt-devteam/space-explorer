@@ -43,10 +43,51 @@ public class PlayerController : MonoBehaviour
   }
   private void Update()
   {
+    CanvasManager.Instance.UpdateHealthBar(player.currentHealth);
+    CanvasManager.Instance.UpdateShieldBar(player.currentShield);
+
     HandleMovement();
     HandleSkills();
   }
   private void HandleSkills()
+  {
+
+  }
+  private IEnumerator ShootCoroutine()
+  {
+    while (isShooting && spaceship != null)
+    {
+      spaceship.Shoot();
+      yield return new WaitForSeconds(shootInterval);
+    }
+  }
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    Debug.Log("Player collided with: " + collision.gameObject.name);
+
+    if (collision.CompareTag("Asteroid") || collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet"))
+    {
+      if (player.currentShield > 0f)
+      {
+        OnDeductShield(1);
+        OnInvincibility();
+      }
+      else
+      {
+        OnDeductHealth(1);
+
+        if (player.currentHealth > 0f)
+        {
+          OnInvincibility();
+        }
+        else
+        {
+          OnExplode();
+        }
+      }
+    }
+  }
+  private void OnInvincibility()
   {
     var spriteRenderer = spaceship.GetComponent<SpriteRenderer>();
 
@@ -66,48 +107,21 @@ public class PlayerController : MonoBehaviour
       }
     }
   }
-  private IEnumerator ShootCoroutine()
+  private void OnDeductHealth(int healthAmount)
   {
-    while (isShooting && spaceship != null)
-    {
-      spaceship.Shoot();
-      yield return new WaitForSeconds(shootInterval);
-    }
+    if (isInvincible) return;
+    player.currentHealth -= healthAmount;
   }
-  private void OnTriggerEnter2D(Collider2D collision)
+  private void OnDeductShield(int shieldAmount)
   {
-    Debug.Log("Player collided with: " + collision.gameObject.name);
-
-    if (collision.CompareTag("Asteroid") || collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet"))
-    {
-      if (player.currentShield > 0f)
-      {
-        player.currentShield -= 1;
-        return;
-      }
-
-      if (isInvincible)
-      {
-        Debug.Log("Player is invincible, no damage taken.");
-        return;
-      }
-
-      Debug.Log("Player took damage from asteroid.");
-      player.currentHealth -= 1;
-
-      if (player.currentHealth <= 0f)
-      {
-        animator.Play("Destruction");
-        GameManager.Instance.EndGame();
-        StartCoroutine(ShowGameOverAfterAnimation());
-      }
-      else
-      {
-        isInvincible = true;
-        invincibleTimer = invincibleDuration;
-        Debug.Log("Player is invincible for 3 seconds.");
-      }
-    }
+    if (isInvincible) return;
+    player.currentShield -= shieldAmount;
+  }
+  private void OnExplode()
+  {
+    animator.Play("Destruction");
+    GameManager.Instance.EndGame();
+    StartCoroutine(ShowGameOverAfterAnimation());
   }
   private IEnumerator ShowGameOverAfterAnimation()
   {

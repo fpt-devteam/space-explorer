@@ -4,24 +4,24 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   [Header("Base Stats")]
-  [SerializeField] public float baseHealth { get; set; } = 11f;
-  [SerializeField] public float maxHealth { get; set; } = 11f;
+  [SerializeField] public int baseHealth { get; set; } = 11;
+  [SerializeField] public int maxHealth { get; set; } = 11;
   [SerializeField] public int baseShield { get; set; } = 2;
   [SerializeField] public int maxShield { get; set; } = 11;
-  [SerializeField] private float baseDamage { get; set; } = 10f;
-  [SerializeField] private float baseMoveSpeed { get; set; } = 5f;
-  [SerializeField] private float baseAttackSpeed { get; set; } = 1f;
+  [SerializeField] private int baseDamage { get; set; } = 10;
+  [SerializeField] private int baseMoveSpeed { get; set; } = 5;
+  [SerializeField] private int baseAttackSpeed { get; set; } = 1;
 
   [Header("Base Skills")]
   [SerializeField] private IPlayerSkill[] baseSkills;
 
   [Header("Runtime Stats")]
-  public float currentHealth { get; set; }
+  public int currentHealth { get; set; }
   public int currentShield { get; set; }
 
-  public float Damage => baseDamage;
-  public float MoveSpeed => baseMoveSpeed;
-  public float AttackSpeed => baseAttackSpeed;
+  public int Damage => baseDamage;
+  public int MoveSpeed => baseMoveSpeed;
+  public int AttackSpeed => baseAttackSpeed;
 
   void Awake()
   {
