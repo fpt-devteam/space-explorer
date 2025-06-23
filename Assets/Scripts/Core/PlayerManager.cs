@@ -1,59 +1,61 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
   public static PlayerManager Instance { get; private set; }
-
-  [Header("Player Ships")]
-  public GameObject[] playerShips;
-  private GameObject currentPlayerShip;
-  private PlayerController playerController;
-
-  private void Awake()
+  public PlayerData playerData;
+  void Awake()
   {
-    if (Instance != null && Instance != this)
-    {
-      Destroy(gameObject);
-      return;
-    }
-    Instance = this;
+    if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+    Instance = this; DontDestroyOnLoad(gameObject);
   }
 
-  private void Start()
+  public void PurchaseItem(string itemId)
   {
-    if (playerShips.Length > 0)
+    if (!playerData.ownedItemIds.Contains(itemId))
     {
-      SelectPlayerShip(0);
-    }
-    else
-    {
-      Debug.LogError("No player ships available!");
+      playerData.ownedItemIds.Add(itemId);
+      Save();
     }
   }
 
-  public void SelectPlayerShip(int shipIndex)
+  public void UpdateHighScore(int newScore)
   {
-    if (shipIndex < 0 || shipIndex >= playerShips.Length) return;
-
-    if (currentPlayerShip != null)
+    if (newScore > playerData.highScore)
     {
-      Destroy(currentPlayerShip);
+      playerData.highScore = newScore;
+      Save();
     }
-
-    currentPlayerShip = Instantiate(playerShips[shipIndex], transform.position, Quaternion.identity);
-    playerController = currentPlayerShip.GetComponent<PlayerController>();
-
-    SetupShipAttributes(shipIndex);
   }
 
-  private void SetupShipAttributes(int shipIndex)
+  public void UpdateLevel(int newLevel)
   {
-    switch (shipIndex)
+    playerData.level = newLevel;
+    Save();
+  }
+  public void LoadForProfile(string profileId)
+  {
+    string fileName = $"player_{profileId}.json";
+    playerData = LocalDataService.Instance.Load<PlayerData>(fileName);
+    Debug.Log($"player Id 31: {playerData.playerId}");
+    if (string.IsNullOrEmpty(playerData.playerId))
     {
-      case 0:
-        currentPlayerShip.GetComponent<Player>().currentHealth = currentPlayerShip.GetComponent<Player>().baseHealth;
-        currentPlayerShip.GetComponent<Player>().currentShield = currentPlayerShip.GetComponent<Player>().baseShield;
-        break;
+      playerData.playerId = profileId;
+      playerData.playerName = ProfileManager.Instance.currentProfile.name;
+      playerData.highScore = 0;
+      playerData.avatarImagePath = ProfileManager.Instance.currentProfile.avatarImagePath;
+      playerData.numStars = 0;
+      playerData.level = 1;
+      playerData.ownedItemIds = new List<string>();
+      Save();
     }
+  }
+
+  public void Save()
+  {
+    string fileName = $"player_{playerData.playerId}.json";
+    LocalDataService.Instance.Save(playerData, fileName);
   }
 }
