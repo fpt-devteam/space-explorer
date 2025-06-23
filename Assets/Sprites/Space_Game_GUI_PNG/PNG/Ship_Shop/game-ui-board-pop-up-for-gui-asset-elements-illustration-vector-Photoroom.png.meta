@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      game-ui-board-pop-up-for-gui-asset-elements-illustration-vector-Photoroom_0: 1189237252736090947
+      game-ui-board-pop-up-for-gui-asset-elements-illustration-vector-Photoroom_1: 3251572419854820006
+      game-ui-board-pop-up-for-gui-asset-elements-illustration-vector-Photoroom_2: -3181054105966527170
+      game-ui-board-pop-up-for-gui-asset-elements-illustration-vector-Photoroom_3: 4974873887158264278
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

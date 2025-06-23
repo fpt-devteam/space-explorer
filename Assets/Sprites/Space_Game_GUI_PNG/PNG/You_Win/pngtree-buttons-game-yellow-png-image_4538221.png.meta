@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pngtree-buttons-game-yellow-png-image_4538221_0: -5369093642868186758
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

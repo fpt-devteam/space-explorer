@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gold-blu-buttons-game_172107-32-Photoroom_0: 8901440801642304541
+      gold-blu-buttons-game_172107-32-Photoroom_1: -1527024309870907636
+      gold-blu-buttons-game_172107-32-Photoroom_2: 2867973402169450705
+      gold-blu-buttons-game_172107-32-Photoroom_3: -7321849338150691639
+      gold-blu-buttons-game_172107-32-Photoroom_4: -1073018626124536116
+      gold-blu-buttons-game_172107-32-Photoroom_5: -2274720353917604261
+      gold-blu-buttons-game_172107-32-Photoroom_6: -6638781984268608751
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 506043567}
   - component: {fileID: 506043566}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -955,6 +955,7 @@ RectTransform:
   - {fileID: 720621121}
   - {fileID: 1084680644}
   - {fileID: 755418117}
+  - {fileID: 643660725}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -962,6 +963,68 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &643660724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 643660725}
+  - component: {fileID: 643660726}
+  m_Layer: 5
+  m_Name: NavbarButtonContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &643660725
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643660724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 506043569}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -38, y: -699}
+  m_SizeDelta: {x: 0, y: 816}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &643660726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643660724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
 --- !u!1 &654174474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &755418117
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1416,8 +1479,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1163682451}
-        m_TargetAssemblyTypeName: HasanSadikin.Carousel.CarouselController`1[[LocationData,
+      - m_Target: {fileID: 1163682455}
+        m_TargetAssemblyTypeName: HasanSadikin.Carousel.CarouselController`1[[SpaceshipData,
           Assembly-CSharp
         m_MethodName: Next
         m_Mode: 1
@@ -1672,7 +1735,7 @@ RectTransform:
   m_GameObject: {fileID: 953325575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1621241925}
@@ -1727,8 +1790,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1163682451}
-        m_TargetAssemblyTypeName: HasanSadikin.Carousel.CarouselController`1[[LocationData,
+      - m_Target: {fileID: 1163682455}
+        m_TargetAssemblyTypeName: HasanSadikin.Carousel.CarouselController`1[[SpaceshipData,
           Assembly-CSharp
         m_MethodName: Previous
         m_Mode: 1
@@ -2135,8 +2198,8 @@ GameObject:
   - component: {fileID: 1163682454}
   - component: {fileID: 1163682453}
   - component: {fileID: 1163682452}
-  - component: {fileID: 1163682451}
   - component: {fileID: 1163682450}
+  - component: {fileID: 1163682455}
   m_Layer: 5
   m_Name: SpaceshipCarousel
   m_TagString: Untagged
@@ -2182,39 +2245,6 @@ MonoBehaviour:
   _visibleItem: 2
   _ease: 19
   _debugCarouselArea: 1
---- !u!114 &1163682451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163682448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa54141912c466445a17886a425ea962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-  - sprite: {fileID: -6074857878563150496, guid: 0bd712266480c4b49804eda682509ff6, type: 3}
-  - sprite: {fileID: 5952012403203656431, guid: 11b4537834b897c43b9f08d2ce157b64, type: 3}
-  - sprite: {fileID: 2787202284349824469, guid: 78e90b93ece08af479ceba5526e422a5, type: 3}
-  _carouselItemPrefab: {fileID: 4215191442023711254, guid: ff74e62ac7aa2bd498ecd24c20ed4421, type: 3}
-  _childOrigin: 7
-  _isInfinity: 0
-  _repeat: 2
-  _indexRepeatOffset: 1
-  _onItemSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  _onCurrentItemUpdated:
-    m_PersistentCalls:
-      m_Calls: []
-  _onNext:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPrev:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1163682452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2266,6 +2296,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163682448}
   m_CullTransparentMesh: 1
+--- !u!114 &1163682455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163682448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc36a00a2e627bb4790a404e613a5d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+  - sprite: {fileID: -6074857878563150496, guid: 0bd712266480c4b49804eda682509ff6, type: 3}
+  - sprite: {fileID: -5971053441932891862, guid: 27501310a75282e4b925e00e2961bfd7, type: 3}
+  - sprite: {fileID: 5952012403203656431, guid: 11b4537834b897c43b9f08d2ce157b64, type: 3}
+  _carouselItemPrefab: {fileID: 7852396526634189672, guid: ff74e62ac7aa2bd498ecd24c20ed4421, type: 3}
+  _childOrigin: 7
+  _isInfinity: 0
+  _repeat: 2
+  _indexRepeatOffset: 1
+  _onItemSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  _onCurrentItemUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  _onNext:
+    m_PersistentCalls:
+      m_Calls: []
+  _onPrev:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1451522226
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,8 +3180,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1163682451}
-        m_TargetAssemblyTypeName: HasanSadikin.Carousel.CarouselController`1[[LocationData,
+      - m_Target: {fileID: 1163682455}
+        m_TargetAssemblyTypeName: HasanSadikin.Carousel.CarouselController`1[[SpaceshipData,
           Assembly-CSharp
         m_MethodName: Select
         m_Mode: 1

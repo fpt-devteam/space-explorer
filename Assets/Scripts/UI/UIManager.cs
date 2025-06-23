@@ -6,28 +6,9 @@ using UnityEngine.UI;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Text scoreText;
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject endGamePanel;
     [SerializeField] private GameObject instructionsPanel;
-
-    private void Start()
-    {
-        ScoreManager.Instance.OnScoreChanged += UpdateScore;
-        UpdateScore(ScoreManager.Instance.Score);
-    }
-
-    private void OnDestroy()
-    {
-        if (ScoreManager.Instance != null)
-            ScoreManager.Instance.OnScoreChanged -= UpdateScore;
-    }
-
-    private void UpdateScore(int score)
-    {
-        if (scoreText)
-            scoreText.text = $"Score: {score}";
-    }
 
     public void ShowMainMenu(bool show)
     {
