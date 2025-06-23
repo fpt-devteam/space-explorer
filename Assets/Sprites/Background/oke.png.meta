@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 52ded283aeeba5a4f84fb4d7f57b3d83
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2851941954070632152
+    second: oke_0
+  - first:
+      213: -4290223617566166600
+    second: oke_1
+  - first:
+      213: 3714122836383125143
+    second: oke_2
+  - first:
+      213: -3338733130177326965
+    second: oke_3
+  - first:
+      213: -6740393030563232956
+    second: oke_4
+  - first:
+      213: 7457115427462079488
+    second: oke_5
+  - first:
+      213: -5481672639964298319
+    second: oke_6
+  - first:
+      213: 310836941199582204
+    second: oke_7
+  - first:
+      213: -4655958387670999569
+    second: oke_8
+  - first:
+      213: 4496903073905351075
+    second: oke_9
+  - first:
+      213: -2644644150334844226
+    second: oke_10
+  - first:
+      213: 5477635148505256038
+    second: oke_11
+  - first:
+      213: -1802801398212021050
+    second: oke_12
+  - first:
+      213: 8642680562141371972
+    second: oke_13
+  - first:
+      213: -595119546932227368
+    second: oke_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: oke_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 373
+        width: 222
+        height: 414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 829269b27eddb68d0800000000000000
+      internalID: -2851941954070632152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_1
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 376
+        width: 549
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b13af3b9501674c0800000000000000
+      internalID: -4290223617566166600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_2
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 658
+        width: 393
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79e48ca9a073b8330800000000000000
+      internalID: 3714122836383125143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_3
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 487
+        width: 364
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b80d3ff48ef6aa1d0800000000000000
+      internalID: -3338733130177326965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_4
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 410
+        width: 361
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44382c630405572a0800000000000000
+      internalID: -6740393030563232956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_5
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 341
+        width: 363
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00466f6c8fefc7760800000000000000
+      internalID: 7457115427462079488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 201
+        width: 23
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b343ffe6cf2de3b0800000000000000
+      internalID: -5481672639964298319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_7
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 180
+        width: 144
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf325471d80505400800000000000000
+      internalID: 310836941199582204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_8
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 231
+        width: 451
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed9ed5c386b26fb0800000000000000
+      internalID: -4655958387670999569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_9
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 163
+        width: 132
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a99d752585386e30800000000000000
+      internalID: 4496903073905351075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_10
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 246
+        width: 82
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb21afd38265c4bd0800000000000000
+      internalID: -2644644150334844226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_11
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 245
+        width: 87
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66099d35528740c40800000000000000
+      internalID: 5477635148505256038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_12
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 245
+        width: 80
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c4bef21ea92bf6e0800000000000000
+      internalID: -1802801398212021050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_13
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 182
+        width: 451
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44e1c9d2e28f0f770800000000000000
+      internalID: 8642680562141371972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oke_14
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 182
+        width: 358
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d29636dce5bdb7f0800000000000000
+      internalID: -595119546932227368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      oke_0: -2851941954070632152
+      oke_1: -4290223617566166600
+      oke_10: -2644644150334844226
+      oke_11: 5477635148505256038
+      oke_12: -1802801398212021050
+      oke_13: 8642680562141371972
+      oke_14: -595119546932227368
+      oke_2: 3714122836383125143
+      oke_3: -3338733130177326965
+      oke_4: -6740393030563232956
+      oke_5: 7457115427462079488
+      oke_6: -5481672639964298319
+      oke_7: 310836941199582204
+      oke_8: -4655958387670999569
+      oke_9: 4496903073905351075
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

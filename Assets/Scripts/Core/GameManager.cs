@@ -105,9 +105,20 @@ public class GameManager : MonoBehaviour
     CurrentState = GameState.MainMenu;
   }
 
-  public void RestartGame()
-  {
-    StartGame();
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-  }
+    public void RestartGame()
+    {
+        StartGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void SetPanelActive(GameObject panel)
+    {
+        if (panel != null)
+        {
+            panel.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning($"Panel is null, it.");
+        }
+    }
 }
