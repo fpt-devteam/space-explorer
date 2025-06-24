@@ -120,8 +120,7 @@ public class CoreAwakeningState : BaseState<Boss>
     rotationAngle += rotationSpeed * Time.deltaTime;
     boss.transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
 
-    Vector3 laserDirection = boss.transform.up;
-    boss.FireLaser(laserDirection);
+    boss.FireLaser(boss.GetPlayerDirection());
 
     if (subStateTimer >= laserAttackDuration)
     {

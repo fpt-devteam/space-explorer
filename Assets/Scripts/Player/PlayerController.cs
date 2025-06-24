@@ -55,8 +55,11 @@ public class PlayerController : MonoBehaviour
       }
       else
       {
-        float t = Mathf.PingPong(Time.time * 5f, 1f);
-        GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, Color.yellow, t);
+        float t = Mathf.PingPong(Time.time * 3f, 1f);
+        GetComponent<SpriteRenderer>().color = Color.Lerp(
+          new Color(1f, 1f, 1f, 0.1f),
+          Color.white,
+          t);
       }
     }
 
@@ -149,14 +152,12 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDir = new Vector2(moveX, moveY).normalized;
     rb.linearVelocity = moveDir * player.MoveSpeed;
 
-    float baseRotationSpeed = 180f;
-    if (Input.GetMouseButton(0))
-    {
-      transform.Rotate(0f, 0f, baseRotationSpeed * Time.deltaTime);
-    }
-    if (Input.GetMouseButton(1))
-    {
-      transform.Rotate(0f, 0f, -baseRotationSpeed * Time.deltaTime);
-    }
+    // rotate the player to mouse
+    Vector3 mousePos = Input.mousePosition;
+    Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
+
+    Vector2 direction = (mousePos - playerScreenPoint).normalized;
+    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    transform.rotation = Quaternion.AngleAxis(angle + 90f + 180f, Vector3.forward);
   }
 }

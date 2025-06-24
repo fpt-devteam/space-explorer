@@ -94,7 +94,7 @@ public class ChaoticOverloadState : BaseState<Boss>
     float newAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
     boss.transform.rotation = Quaternion.Euler(0, 0, newAngle);
 
-    boss.FireLaser(playerDirection);
+    boss.FireLaser(boss.GetPlayerDirection());
 
     if (subStateTimer >= trackingDuration)
     {

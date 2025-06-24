@@ -133,6 +133,8 @@ public class Boss : StateMachineController<Boss>
   {
     if (laserPrefab && firePoint)
     {
+      // the direction is offset 90 deg with the direction vector
+      direction = direction + new Vector3(0, 0, 90);
       GameObject bullet = Instantiate(laserPrefab, firePoint.position, Quaternion.LookRotation(Vector3.forward, direction));
       bullet.tag = "EnemyBullet";
 
