@@ -8,7 +8,17 @@ public class LeaderboardUiManager : MonoBehaviour
     [SerializeField] private Transform tableContent;
     [SerializeField] private GameObject rowPrefab;
 
+    [Header("Panel ranking")]
+    [SerializeField] private GameObject rankingPanel;
+
     private List<GameObject> rows = new List<GameObject>();
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            rankingPanel.SetActive(false);
+        }
+    }
 
     void OnEnable()
     {
@@ -24,8 +34,8 @@ public class LeaderboardUiManager : MonoBehaviour
         if (LeaderboardManager.Instance != null)
         {
             LeaderboardManager.Instance.LoadLeaderboardData();
-            
-            if (LeaderboardManager.Instance.leaderboardData != null && 
+
+            if (LeaderboardManager.Instance.leaderboardData != null &&
                 LeaderboardManager.Instance.leaderboardData.topEntries != null)
             {
                 // Hiển thị dữ liệu mới
@@ -60,10 +70,10 @@ public class LeaderboardUiManager : MonoBehaviour
         // Tạo một dòng mới
         GameObject rowObj = Instantiate(original: rowPrefab, parent: tableContent);
         rows.Add(rowObj);
-        
+
         // Lấy tất cả các text elements trong dòng
         TextMeshProUGUI[] texts = rowObj.GetComponentsInChildren<TextMeshProUGUI>();
-        
+
         // Đặt dữ liệu vào dòng
         if (texts.Length >= 3)
         {
