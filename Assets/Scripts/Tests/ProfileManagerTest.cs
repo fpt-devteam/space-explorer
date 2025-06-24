@@ -69,11 +69,11 @@ public class ProfileManagerTest : MonoBehaviour
         PlayerData player2 = new PlayerData() { playerId = Guid.NewGuid().ToString(), playerName = "Captain Beta", avatarImagePath = "Assets/Art/Avatars/Avatar2.png" };
         PlayerData player3 = new PlayerData() { playerId = Guid.NewGuid().ToString(), playerName = "Pilot Gamma", avatarImagePath = "Assets/Art/Avatars/Avatar3.png" };
 
-        profileManager.CreateProfile(player1.playerId, player1.playerName, player1.avatarImagePath);
+        // profileManager.CreateProfile(player1.playerId, player1.playerName, player1.avatarImagePath);
 
-        profileManager.CreateProfile(player2.playerId, player2.playerName, player2.avatarImagePath);
+        // profileManager.CreateProfile(player2.playerId, player2.playerName, player2.avatarImagePath);
 
-        profileManager.CreateProfile(player3.playerId, player3.playerName, player3.avatarImagePath);
+        // profileManager.CreateProfile(player3.playerId, player3.playerName, player3.avatarImagePath);
 
         LogMessage(message: $"Created {profileManager.profileList.profiles.Count} profiles");
     }

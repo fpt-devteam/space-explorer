@@ -5,7 +5,27 @@ using UnityEngine;
 
 public class ProfileManager : MonoBehaviour
 {
-  public static ProfileManager Instance { get; private set; }
+  private static ProfileManager _instance;
+  public static ProfileManager Instance
+  {
+    get
+    {
+      if (_instance == null)
+      {
+        _instance = FindObjectOfType<ProfileManager>();
+        if (_instance == null)
+        {
+          GameObject obj = new GameObject("ProfileManager");
+          _instance = obj.AddComponent<ProfileManager>();
+        }
+
+        DontDestroyOnLoad(_instance.gameObject);
+        _instance.LoadProfiles();
+      }
+      return _instance;
+    }
+    private set { _instance = value; }
+  }
 
   const string FILE_NAME = "profiles.json";
   string DataPath => Application.persistentDataPath + "/";
@@ -13,13 +33,14 @@ public class ProfileManager : MonoBehaviour
   public ProfileList profileList;
   public ProfileMeta currentProfile;
 
-  void Awake()
-  {
-    if (Instance != null && Instance != this) { Destroy(gameObject); return; }
-    Instance = this;
-    DontDestroyOnLoad(gameObject);
-    LoadProfiles();
-  }
+  // void Awake()
+  // {
+  //   if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+  //   Instance = this;
+  //   DontDestroyOnLoad(gameObject);
+  //   LoadProfiles();
+  //   print($"ProfileManager Awake: {profileList?.profiles.Count} profiles loaded.");
+  // }
 
   public void LoadProfiles()
   {
@@ -42,13 +63,13 @@ public class ProfileManager : MonoBehaviour
     File.WriteAllText(Path.Combine(DataPath, FILE_NAME), json);
   }
 
-  public void CreateProfile(string playerId, string playerName, string avatarImagePath)
+  public void CreateProfile(string playerName)
   {
     var meta = new ProfileMeta
     {
-      playerId = playerId,
+      playerId = Guid.NewGuid().ToString(),
       name = playerName,
-      avatarImagePath = avatarImagePath
+      avatarImagePath = ""
     };
     profileList.profiles.Add(meta);
     SaveProfiles();
@@ -56,12 +77,14 @@ public class ProfileManager : MonoBehaviour
 
   public void SelectProfile(string playerId)
   {
-    currentProfile = profileList.profiles.FirstOrDefault(p => p.playerId == playerId);
-    if (currentProfile == null)
-    {
-      Debug.LogError($"Profile {playerId} not found");
-      return;
-    }
-    PlayerManager.Instance.LoadForProfile(currentProfile.playerId);
+    // playerId = (playerId == "") ? GlobalData.Instance.playerId : playerId;
+    // print($"Selected profile: {currentProfile.name} ({currentProfile.playerId}) Singleton: {GlobalData.Instance.playerId} PlayerId: {playerId}");
+    // currentProfile = profileList.profiles.FirstOrDefault(p => p.playerId == playerId);
+    // if (currentProfile == null)
+    // {
+    //   Debug.LogError($"Profile {playerId} not found");
+    //   return;
+    // }
+    // PlayerManager.Instance.LoadForProfile(profileId: playerId);
   }
 }
