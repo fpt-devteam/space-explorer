@@ -4,6 +4,6 @@ using System;
 public class ProfileMeta
 {
     public string playerId;
-    public string name; 
+    public string name;
     public string avatarImagePath;
 }

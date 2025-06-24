@@ -41,8 +41,15 @@ public class FireAsteroid : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    if (!collision.CompareTag("PlayerBullet")) return;
+    if (collision.CompareTag("Player"))
+    {
+      SoundManager.Instance.PlaySFX(SoundManager.Instance.hitLava);
+      Destroy(gameObject);
+      return;
+    }
 
+    if (!collision.CompareTag("PlayerBullet")) return;
+    SoundManager.Instance.PlaySFX(SoundManager.Instance.boomAsteroid);
     Destroy(collision.gameObject);
     ScoreManager.Instance?.AddPoints(2);
 

@@ -19,6 +19,7 @@ public class CanvasManager : MonoBehaviour
   }
   public void ShowGameOverMenu()
   {
+    SoundManager.Instance.PlaySFX(SoundManager.Instance.gameOver);
     gameOverMenu.SetActive(true);
     Time.timeScale = 0f;
   }
@@ -30,6 +31,8 @@ public class CanvasManager : MonoBehaviour
 
   public void ShowWinMenu()
   {
+    Debug.Log("Show Win Menu");
+    SoundManager.Instance.PlaySFX(SoundManager.Instance.victory);
     winMenu.SetActive(true);
     Time.timeScale = 0f;
   }

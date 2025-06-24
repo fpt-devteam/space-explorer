@@ -1,19 +1,22 @@
 using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// Spawns asteroids at random positions and intervals.
-/// </summary>
 public class AsteroidSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject asteroidPrefab;
     [SerializeField] private GameObject fireAsteroidPrefab;
-    [SerializeField] private float spawnInterval = 1f;
+    [SerializeField] private float spawnInterval = 0f;
+    [SerializeField] private Transform player;
 
     private bool spawning = true;
 
     private void Start()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
         StartCoroutine(SpawnAsteroids());
     }
 
@@ -40,8 +43,9 @@ public class AsteroidSpawner : MonoBehaviour
             return;
         }
 
-        Vector2 spawnPos = RandomPointInCircle(25f);
-        if (Random.Range(0f, 1f) < 0.3f)
+        Vector2 spawnPos = RandomPointInCircleAroundPlayer(10f);
+
+        if (Random.Range(0f, 1f) < 0.5f)
         {
             Instantiate(fireAsteroidPrefab, spawnPos, Quaternion.identity);
             return;
@@ -55,12 +59,11 @@ public class AsteroidSpawner : MonoBehaviour
         spawning = false;
     }
 
-    private Vector2 RandomPointInCircle(float radius)
+    private Vector2 RandomPointInCircleAroundPlayer(float radius)
     {
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         float r = Random.Range(0.5f * radius, radius);
         Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * r;
-        return (Vector2)transform.position + offset;
+        return (Vector2)player.position + offset;
     }
-
 }

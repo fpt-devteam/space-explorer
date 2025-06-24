@@ -283,17 +283,8 @@ public class MiniBoss : MonoBehaviour
       Player playerScript = collision.GetComponent<Player>();
       if (playerScript != null)
       {
-        if (playerScript.currentShield > 0f)
-        {
-          playerScript.currentShield -= 1;
-        }
-        else
-        {
-          playerScript.currentHealth = 0;
-        }
+        playerScript.currentHealth = 0;
       }
-
-      Die();
     }
   }
 

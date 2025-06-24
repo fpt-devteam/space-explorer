@@ -51,7 +51,19 @@ public class PlayerController : MonoBehaviour
       {
         isInvincible = false;
         invincibleTimer = 0f;
+        GetComponent<SpriteRenderer>().color = Color.white;
       }
+      else
+      {
+        float t = Mathf.PingPong(Time.time * 5f, 1f);
+        GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, Color.yellow, t);
+      }
+    }
+
+    if (player.currentHealth <= 0f)
+    {
+      OnExplode();
+      return;
     }
 
     canvasManager.UpdateHealthBar(player.currentHealth);
@@ -101,22 +113,10 @@ public class PlayerController : MonoBehaviour
   }
   private void OnInvincibility()
   {
-    var spriteRenderer = spaceship.GetComponent<SpriteRenderer>();
-
-    if (isInvincible)
+    if (!isInvincible)
     {
-      invincibleTimer -= Time.deltaTime;
-      if (invincibleTimer <= 0f)
-      {
-        Debug.Log("Invincibility ended.");
-        isInvincible = false;
-        spriteRenderer.color = Color.white;
-      }
-      else
-      {
-        float t = Mathf.PingPong(Time.time * 5f, 1f);
-        spriteRenderer.color = Color.Lerp(Color.black, Color.yellow, t);
-      }
+      isInvincible = true;
+      invincibleTimer = 0f;
     }
   }
   private void OnDeductHealth(int healthAmount)
@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
   private void OnExplode()
   {
     animator.Play("Destruction");
+    SoundManager.Instance.PlaySFX(SoundManager.Instance.boomSpaceShip);
     GameManager.Instance.EndGame();
     StartCoroutine(ShowGameOverAfterAnimation());
   }

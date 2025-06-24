@@ -20,8 +20,26 @@ public class SoundManager : MonoBehaviour
    public AudioClip bloodLow;
    public AudioClip fallingCoin;
    public AudioClip gameOver;
+   public AudioClip hitLava;
+   public AudioClip hitStar;
+   public AudioClip hitShield;
+   public AudioClip hitAsteroid;
+   public AudioClip victory;
+   public AudioClip levelUp;
+   public AudioClip onClickSelectMenu;
+   public AudioClip boomAsteroid;
+   public AudioClip shotBoss;
+   public AudioClip boomSpaceShip;
+
+   [Header("SFX - Player")]
+   public AudioClip laserShot;
+   public AudioClip playerThrust;
+   public AudioClip playerDrift;
+   public AudioClip playerProjectile;
+   public AudioClip playerBoost;
 
    [Header("UI")]
+
    public AudioClip buttonClick;
 
    private void Awake()
@@ -34,13 +52,13 @@ public class SoundManager : MonoBehaviour
       Instance = this;
       DontDestroyOnLoad(gameObject);
    }
-   private void Start()
-   {
-      PlayMusic(mainMenuMusic);
-   }
 
    public void PlayMusic(AudioClip clip)
    {
+      if (_musicSource.isPlaying)
+      {
+         _musicSource.Stop();
+      }
       if (clip != null)
       {
          _musicSource.clip = clip;

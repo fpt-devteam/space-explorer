@@ -10,7 +10,8 @@ public class LeaderboardManager : MonoBehaviour
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
-        Instance = this; DontDestroyOnLoad(gameObject);
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadLeaderboardData()
@@ -29,5 +30,14 @@ public class LeaderboardManager : MonoBehaviour
         leaderboardData.topEntries.Sort((a, b) => b.score.CompareTo(a.score));
         leaderboardData.topEntries = leaderboardData.topEntries.GetRange(0, Math.Min(10, leaderboardData.topEntries.Count));
         SaveLeaderboardData();
+    }
+
+    public int GetHighScore()
+    {
+        if (leaderboardData.topEntries.Count > 0)
+        {
+            return leaderboardData.topEntries[0].score;
+        }
+        return 0; // No scores available
     }
 }

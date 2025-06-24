@@ -10,7 +10,7 @@ public class StarPickup : CollectibleObject
   public override void Collect(GameObject collector)
   {
     var playerStar = collector.GetComponent<Player>();
-    
+
     if (playerStar != null)
     {
       // playerStar.currentHealth += starAmount;
@@ -21,8 +21,8 @@ public class StarPickup : CollectibleObject
   {
     if (other.CompareTag("Player"))
     {
-      Debug.Log("Star collected by Player!");
-      StarManager.Instance.AddPoints(1); 
+      SoundManager.Instance.PlaySFX(SoundManager.Instance.hitStar);
+      StarManager.Instance.AddPoints(1);
       Collect(other.gameObject);
       Destroy(gameObject);
     }

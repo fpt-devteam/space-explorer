@@ -25,6 +25,12 @@ public class ScoreManager : MonoBehaviour
       return;
     }
 
+    LeaderboardManager.Instance.LoadLeaderboardData();
+    // Load high score from LeaderboardManager
+    highScore = LeaderboardManager.Instance.GetHighScore();
+    Debug.Log($"ScoreManager: Loaded high score: {highScore}");
+    Debug.Log($"Num Leaderboard Entries: {LeaderboardManager.Instance.leaderboardData.topEntries.Count}");
+
     Instance = this;
 
     UpdateUI();

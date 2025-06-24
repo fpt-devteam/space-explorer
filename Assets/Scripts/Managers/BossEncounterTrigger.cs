@@ -121,11 +121,7 @@ public class BossEncounterTrigger : MonoBehaviour
 
   private void PlayBossMusic()
   {
-    if (musicAudioSource != null && bossMusic != null)
-    {
-      musicAudioSource.clip = bossMusic;
-      musicAudioSource.Play();
-    }
+    SoundManager.Instance.PlaySFX(SoundManager.Instance.bossLaugh);
   }
 
   private void ActivateBoss()
