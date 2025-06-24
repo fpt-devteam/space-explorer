@@ -35,17 +35,16 @@ public class PlayerManager : MonoBehaviour
     playerData.level = newLevel;
     Save();
   }
-  public void LoadForProfile(string profileId)
+  public void LoadForProfile(string profileId, string playerName)
   {
     string fileName = $"player_{profileId}.json";
     playerData = LocalDataService.Instance.Load<PlayerData>(fileName);
-    Debug.Log($"player Id 31: {playerData.playerId}");
     if (string.IsNullOrEmpty(playerData.playerId))
     {
       playerData.playerId = profileId;
-      playerData.playerName = ProfileManager.Instance.currentProfile.name;
+      playerData.playerName = playerName;
       playerData.highScore = 0;
-      playerData.avatarImagePath = ProfileManager.Instance.currentProfile.avatarImagePath;
+      playerData.avatarImagePath = "";
       playerData.numStars = 0;
       playerData.level = 1;
       playerData.ownedItemIds = new List<string>();
