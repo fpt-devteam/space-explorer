@@ -22,14 +22,15 @@ public class StarManager : MonoBehaviour
     }
 
     Instance = this;
-
+    Star = PlayerManager.Instance.playerData.numStars;
     UpdateUI();
   }
 
   public void AddPoints(int points)
   {
-    Star += points;
 
+    Star += points;
+    PlayerManager.Instance.UpdateStarCount(Star);
     UpdateUI();
 
     Debug.Log($"StarManager: Added {points} points. New Star: {Star}");

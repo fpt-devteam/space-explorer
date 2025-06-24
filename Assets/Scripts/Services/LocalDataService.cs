@@ -18,6 +18,7 @@ public class LocalDataService : MonoBehaviour
     {
         string json = JsonUtility.ToJson(obj: data, prettyPrint: true);
         File.WriteAllText(path: Path.Combine(path1: dataPath, path2: fileName), contents: json);
+        Debug.Log(message: $"Data saved to: {Path.Combine(path1: dataPath, path2: fileName)}");
     }
 
     public T Load<T>(string fileName) where T : new()

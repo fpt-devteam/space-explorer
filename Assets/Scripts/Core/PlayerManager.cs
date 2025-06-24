@@ -30,6 +30,13 @@ public class PlayerManager : MonoBehaviour
     }
   }
 
+  public void UpdateStarCount(int newStarCount)
+  {
+    playerData.numStars = newStarCount;
+    Save();
+
+  }
+
   public void UpdateLevel(int newLevel)
   {
     playerData.level = newLevel;

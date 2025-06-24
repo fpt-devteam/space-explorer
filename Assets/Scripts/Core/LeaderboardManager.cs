@@ -31,4 +31,13 @@ public class LeaderboardManager : MonoBehaviour
         leaderboardData.topEntries = leaderboardData.topEntries.GetRange(0, Math.Min(10, leaderboardData.topEntries.Count));
         SaveLeaderboardData();
     }
+
+    public int GetHighScore()
+    {
+        if (leaderboardData.topEntries.Count > 0)
+        {
+            return leaderboardData.topEntries[0].score;
+        }
+        return 0; // No scores available
+    }
 }
