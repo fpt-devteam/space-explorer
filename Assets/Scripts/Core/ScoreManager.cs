@@ -5,49 +5,57 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager Instance { get; private set; }
+  public static ScoreManager Instance { get; private set; }
 
-    [Header("UI")]
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI highScoreText;
+  [Header("UI")]
+  [SerializeField] private TextMeshProUGUI scoreText;
+  [SerializeField] private TextMeshProUGUI highScoreText;
 
-    private int score = 0;
-    private int highScore = 0;
+  private int score = 0;
+  private int highScore = 0;
 
-    private void Awake()
+  public int Score => score;
+
+  private void Awake()
+  {
+    Debug.Log("ScoreManager: Awake called");
+    if (Instance != null && Instance != this)
     {
-        Debug.Log("ScoreManager: Awake called");
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-
-        UpdateUI();
+      Destroy(gameObject);
+      return;
     }
 
-    public void AddPoints(int points)
-    {
-        score += points;
+    LeaderboardManager.Instance.LoadLeaderboardData();
+    // Load high score from LeaderboardManager
+    highScore = LeaderboardManager.Instance.GetHighScore();
+    Debug.Log($"ScoreManager: Loaded high score: {highScore}");
+    Debug.Log($"Num Leaderboard Entries: {LeaderboardManager.Instance.leaderboardData.topEntries.Count}");
 
-        UpdateUI();
+    Instance = this;
 
-        Debug.Log($"ScoreManager: Added {points} points. New score: {score}");
-    }
+    UpdateUI();
+  }
 
-    public void ResetScore()
-    {
-        score = 0;
-        UpdateUI();
-    }
+  public void AddPoints(int points)
+  {
+    score += points;
 
-    private void UpdateUI()
-    {
-        if (scoreText != null)
-            scoreText.text = $"Score: {score}";
-        if (highScoreText != null)
-            highScoreText.text = $"High Score: {highScore}";
-    }
+    UpdateUI();
+
+    Debug.Log($"ScoreManager: Added {points} points. New score: {score}");
+  }
+
+  public void ResetScore()
+  {
+    score = 0;
+    UpdateUI();
+  }
+
+  private void UpdateUI()
+  {
+    if (scoreText != null)
+      scoreText.text = $"Score: {score}";
+    if (highScoreText != null)
+      highScoreText.text = $"High Score: {highScore}";
+  }
 }

@@ -6,6 +6,8 @@ public class ShieldSystem : MonoBehaviour
   private GameObject shieldObject;
   private Animator animator;
 
+  public bool IsShieldActive => player.currentShield > 0;
+
   private void Awake()
   {
     animator = GetComponent<Animator>();
@@ -40,7 +42,7 @@ public class ShieldSystem : MonoBehaviour
       return;
     }
 
-    if (player.isShieldActive)
+    if (IsShieldActive)
     {
       ActivateShield();
     }

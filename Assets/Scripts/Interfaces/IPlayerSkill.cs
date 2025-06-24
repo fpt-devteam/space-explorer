@@ -5,7 +5,6 @@ public interface IPlayerSkill
   float lastUseTime { get; }
   float cooldown { get; }
   SkillType SkillType { get; }
-  void Init();
   void Execute();
   bool CanUse(float currentStamina) => currentStamina >= staminaCost;
 }

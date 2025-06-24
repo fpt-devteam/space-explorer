@@ -12,7 +12,6 @@ public class CollectibleSpawner : MonoBehaviour
     if (collectiblePrefabs == null || collectiblePrefabs.Length == 0)
     {
       Debug.LogWarning("Collectible prefabs are not assigned.");
-      return;
     }
   }
 
