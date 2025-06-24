@@ -34,8 +34,16 @@ public class Asteroid : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
+    if (collision.CompareTag("Player"))
+    {
+      SoundManager.Instance.PlaySFX(SoundManager.Instance.hitAsteroid);
+      Destroy(gameObject);
+      return;
+    }
+
     if (!collision.CompareTag("PlayerBullet")) return;
 
+    SoundManager.Instance.PlaySFX(SoundManager.Instance.boomAsteroid);
     Destroy(collision.gameObject);
     ScoreManager.Instance.AddPoints(1);
 

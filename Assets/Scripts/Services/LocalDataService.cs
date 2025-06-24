@@ -23,6 +23,7 @@ public class LocalDataService : MonoBehaviour
     public T Load<T>(string fileName) where T : new()
     {
         string fullPath = Path.Combine(path1: dataPath, path2: fileName);
+        Debug.Log($"Loading data from: {fullPath}");
         if (!File.Exists(path: fullPath)) return new T();
         string json = File.ReadAllText(path: fullPath);
         return JsonUtility.FromJson<T>(json: json);

@@ -20,7 +20,7 @@ public class ShieldPickup : CollectibleObject
   {
     if (other.CompareTag("Player"))
     {
-      Debug.Log("Shield collected by Player!");
+      SoundManager.Instance.PlaySFX(SoundManager.Instance.hitShield);
       Collect(other.gameObject);
       Destroy(gameObject);
     }

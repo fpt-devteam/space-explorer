@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4057783910844590309}
   - component: {fileID: 1730136088337433876}
   - component: {fileID: 3271365821374639140}
+  - component: {fileID: 4357466216542693231}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -142,6 +143,7 @@ MonoBehaviour:
   firePoint: {fileID: 2837989194038738097}
   laserPrefab: {fileID: 1894291689271604418, guid: 3493d85cdd60ce04da291389e0042b98, type: 3}
   healthSlider: {fileID: 0}
+  canvasManager: {fileID: 4357466216542693231}
 --- !u!114 &4057783910844590309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,3 +230,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4357466216542693231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7238238203229441550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a7cd3b52b66904a9ed71522a89dd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  gameOverMenu: {fileID: 0}
+  winMenu: {fileID: 0}
+  settingsMenu: {fileID: 0}
+  playerHUD: {fileID: 0}

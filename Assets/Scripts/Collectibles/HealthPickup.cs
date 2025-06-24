@@ -17,7 +17,7 @@ public class HealthPickup : CollectibleObject
   {
     if (other.CompareTag("Player"))
     {
-      Debug.Log("Health collected by Player!");
+      SoundManager.Instance.PlaySFX(SoundManager.Instance.hitShield);
       Collect(other.gameObject);
       Destroy(gameObject);
     }

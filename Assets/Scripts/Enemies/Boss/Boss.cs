@@ -125,6 +125,7 @@ public class Boss : StateMachineController<Boss>
     }
 
     gameObject.SetActive(false);
+    SoundManager.Instance.PlaySFX(SoundManager.Instance.boomSpaceShip);
     canvasManager.ShowWinMenu();
   }
 
@@ -180,8 +181,17 @@ public class Boss : StateMachineController<Boss>
   {
     if (other.CompareTag("PlayerBullet"))
     {
+      SoundManager.Instance.PlaySFX(SoundManager.Instance.shotBoss);
       TakeDamage(10);
       Destroy(other.gameObject);
+    }
+    else if (other.CompareTag("Player"))
+    {
+      Player playerScript = other.GetComponent<Player>();
+      if (playerScript != null)
+      {
+        playerScript.currentHealth = 0;
+      }
     }
   }
 }

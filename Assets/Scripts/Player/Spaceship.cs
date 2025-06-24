@@ -12,8 +12,8 @@ public class Spaceship : MonoBehaviour
 
   public void Shoot()
   {
-    Debug.Log(GameManager.Instance.CurrentState);
-    if (GameManager.Instance.CurrentState == GameState.GameOver) return;
+    // Debug.Log(GameManager.Instance.CurrentState);
+    // if (GameManager.Instance.CurrentState == GameState.GameOver) return;
 
     if (bulletPrefab && firePoint)
     {
@@ -22,6 +22,9 @@ public class Spaceship : MonoBehaviour
 
       Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
       bulletRb.linearVelocity = (firePoint.position - transform.position).normalized * bulletSpeed;
+
+      Debug.Log(SoundManager.Instance);
+      SoundManager.Instance.PlaySFX(SoundManager.Instance.laserShot);
     }
   }
   public void SpecialShoot()
