@@ -133,4 +133,10 @@ public class GameManager : MonoBehaviour
       Debug.LogWarning($"Panel is null, it.");
     }
   }
+
+  //Quit game
+  public static void QuitGame()
+  {
+    Application.Quit();
+  }
 }
