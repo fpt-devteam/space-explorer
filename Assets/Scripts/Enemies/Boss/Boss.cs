@@ -31,7 +31,7 @@ public class Boss : StateMachineController<Boss>
   public Transform FirePoint => firePoint;
   public GameObject LaserPrefab => laserPrefab;
   public MiniBossSpawner MiniBossSpawner => miniBossSpawner;
-  [SerializeField] private CanvasManager canvasManager;
+  [SerializeField] private CanvasUI canvasManager;
 
   protected override void Awake()
   {

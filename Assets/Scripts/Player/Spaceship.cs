@@ -40,13 +40,6 @@ public class Spaceship : MonoBehaviour
       Destroy(collision.gameObject);
       // health.UseHealth(1);
     }
-    else if (collision.gameObject.CompareTag("Enemy"))
-    {
-      // Handle collision with enemy
-      // For example, you can reduce health or destroy the enemy
-      Destroy(collision.gameObject);
-      // health.UseHealth(1);
-    }
     else if (collision.gameObject.CompareTag("EnemyBullet"))
     {
       // health.UseHealth(1);

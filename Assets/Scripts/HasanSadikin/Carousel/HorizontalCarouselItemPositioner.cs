@@ -32,18 +32,21 @@ namespace HasanSadikin.Carousel
 
             _realIsStatic = _isStatic;
         }
+        private void OnValidate()
+        {
+            if (_image == null) _image = GetComponent<Image>();
 
+            _image.color = _debugCarouselArea ? new Color(1, 1, 1, 50 / 255f) : new Color(1, 1, 1, 1 / 255f);
 
-        // private void OnValidate()
-        // {
-        //     if (_image == null) _image = GetComponent<Image>();
-        //     if (_isStatic)
-        //     {
-        //         return;
-        //     }
+            if (_isStatic)
+            {
+                return;
+            }
 
-        //     EditorApplication.delayCall += UpdateSizeDelta;
-        // }
+#if UNITY_EDITOR
+            EditorApplication.delayCall += UpdateSizeDelta;
+#endif
+        }
 
         public void SetPosition(RectTransform rectTransform, int index)
         {
@@ -61,7 +64,6 @@ namespace HasanSadikin.Carousel
         {
             return a.anchoredPosition.x > b.anchoredPosition.x;
         }
-
         private void UpdateSizeDelta()
         {
             if (_image != null && _image.rectTransform != null)
@@ -81,7 +83,9 @@ namespace HasanSadikin.Carousel
                 }
             }
 
+#if UNITY_EDITOR
             EditorApplication.delayCall -= UpdateSizeDelta;
+#endif
         }
     }
 }

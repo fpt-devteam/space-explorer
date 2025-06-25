@@ -9,20 +9,26 @@ EditorBuildSettings:
     path: Assets/Settings/MenuScene.unity
     guid: a1c0e5abbcb37a743bcc7d9198e0b106
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/GamePlayScene.unity
-    guid: 6ce86534346964047837de6ec7ff3eb6
-  - enabled: 1
-    path: Assets/Scenes/SampleScene 1.unity
-    guid: fa04c79864e65fa49b73881f81e28bf3
-  - enabled: 1
-    path: Assets/Scenes/MenuScene 1.unity
-    guid: 853f80b132e69af45a72255c0a16faac
-  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: 468e7ff83c6e2d54d83edefd599c36b4
+  - enabled: 0
+    path: Assets/Scenes/UserPickScene.unity
+    guid: 33ef7c7a3e85b0046b180e82171409fc
+  - enabled: 0
     path: Assets/Scenes/MenuScene.unity
     guid: b0d2105ff9a83b14c8619e8defb63f15
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: fa04c79864e65fa49b73881f81e28bf3
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 0
+    path: Assets/Scenes/GamePlayScene.unity
+    guid: 6ce86534346964047837de6ec7ff3eb6
+  - enabled: 0
+    path: Assets/Scenes/MenuScene 1.unity
+    guid: 9aa3c3462cd944998b191c65266d0407
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

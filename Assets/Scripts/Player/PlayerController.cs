@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
   private float invincibleTimer = 0f;
   [SerializeField] private float invincibleDuration = 3f;
   [SerializeField] private float shootInterval = 0.9f;
-  [SerializeField] private CanvasManager canvasManager;
+  [SerializeField] private CanvasUI canvasManager;
 
   public void Restart()
   {
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
   {
     Debug.Log("Player collided with: " + collision.gameObject.name);
 
-    if (collision.CompareTag("Asteroid") || collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet"))
+    if (collision.CompareTag("Asteroid") || collision.CompareTag("EnemyBullet"))
     {
       if (player.currentShield > 0f)
       {
@@ -151,13 +151,5 @@ public class PlayerController : MonoBehaviour
 
     Vector2 moveDir = new Vector2(moveX, moveY).normalized;
     rb.linearVelocity = moveDir * player.MoveSpeed;
-
-    // rotate the player to mouse
-    Vector3 mousePos = Input.mousePosition;
-    Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-
-    Vector2 direction = (mousePos - playerScreenPoint).normalized;
-    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    transform.rotation = Quaternion.AngleAxis(angle + 90f + 180f, Vector3.forward);
   }
 }

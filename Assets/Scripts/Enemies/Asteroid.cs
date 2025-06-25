@@ -44,8 +44,8 @@ public class Asteroid : MonoBehaviour
     if (!collision.CompareTag("PlayerBullet")) return;
 
     SoundManager.Instance.PlaySFX(SoundManager.Instance.boomAsteroid);
-    Destroy(collision.gameObject);
     ScoreManager.Instance.AddPoints(1);
+    Destroy(collision.gameObject);
 
     if (animator)
     {
